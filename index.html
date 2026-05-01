@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WHOOP × The Attention Economy Pivot · Abdullah Fakhri</title>
+<meta name="description" content="An unsolicited strategic pitch for WHOOP — extending the platform into esports, streaming, and the creator economy. Built by a first-generation Arab American bio sci graduate and competitive esports player."/>
+
+<meta property="og:title" content="WHOOP × The Attention Economy Pivot"/>
+<meta property="og:description" content="The next 500M WHOOP members are already wearing it. The product just hasn't been built for them yet."/>
+<meta property="og:type" content="website"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&family=Instrument+Serif&display=swap" rel="stylesheet"/>
+
+<style>
+  :root{
+    --red:#E8003D;
+    --red-deep:#8a0022;
+    --red-bright:#ff1f5a;
+    --bg:#000;
+    --bg-2:#0a0a0a;
+    --bg-3:#141414;
+    --surface:#1a1a1a;
+    --surface-2:#222;
+    --border:#2a2a2a;
+    --border-2:#3a3a3a;
+    --text:#f5f5f5;
+    --text-2:#b8b8b8;
+    --text-3:#7a7a7a;
+    --text-4:#4a4a4a;
+    --green:#00d68f;
+    --amber:#ffb800;
+    --blue:#4a9eff;
+    --purple:#a87fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'DM Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events:none;z-index:1;opacity:0.5;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding:14px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  nav .brand{
+    font-family:'Space Mono',monospace;
+    font-weight:700;letter-spacing:0.1em;
+    font-size:13px;
+    display:flex;align-items:center;gap:10px;
+    color:var(--text);
+    text-decoration:none;
+    cursor:pointer;
+    transition:opacity 0.2s;
+  }
+  nav .brand:hover{opacity:0.8}
+  nav .brand span{color:var(--red)}
+  nav .chapters{
+    display:flex;gap:24px;
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);letter-spacing:0.1em;
+  }
+  nav .chapters a{
+    color:var(--text-3);text-decoration:none;
+    transition:color 0.2s;cursor:pointer;
+  }
+  nav .chapters a:hover{color:var(--red)}
+  nav .chapters a.active{color:var(--red)}
+  nav .cta{
+    background:var(--red);color:#fff;
+    padding:8px 16px;border-radius:2px;
+    font-family:'Space Mono',monospace;font-size:11px;
+    text-decoration:none;letter-spacing:0.1em;
+    transition:background 0.2s;
+  }
+  nav .cta:hover{background:var(--red-bright)}
+  @media(max-width:1100px){nav .chapters{display:none}}
+  @media(max-width:600px){nav .cta{display:none}nav{padding:12px 20px}}
+
+  /* MOBILE MENU */
+  .menu-toggle{
+    display:none;
+    background:none;border:1px solid var(--border-2);
+    color:var(--text);padding:8px 12px;
+    font-family:'Space Mono',monospace;font-size:11px;
+    cursor:pointer;letter-spacing:0.1em;
+  }
+  @media(max-width:1100px){.menu-toggle{display:block}}
+  .mobile-menu{
+    display:none;
+    position:fixed;top:60px;left:0;right:0;
+    background:rgba(0,0,0,0.95);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding:24px 32px;
+    z-index:99;
+  }
+  .mobile-menu.open{display:flex;flex-direction:column;gap:18px}
+  .mobile-menu a{
+    color:var(--text-2);text-decoration:none;
+    font-family:'Space Mono',monospace;
+    font-size:14px;letter-spacing:0.1em;
+    padding:8px 0;border-bottom:1px solid var(--border);
+  }
+
+  /* SECTION BASE */
+  section{
+    position:relative;z-index:2;
+    padding:140px 32px;
+    max-width:1280px;margin:0 auto;
+    border-bottom:1px solid var(--border);
+    scroll-margin-top:80px;
+  }
+  section:last-of-type{border-bottom:none}
+  @media(max-width:768px){section{padding:80px 20px}}
+
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.2em;
+    color:var(--red);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  h2.section-title{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(40px,6vw,72px);
+    line-height:0.95;
+    letter-spacing:-0.02em;
+    margin-bottom:24px;
+    font-weight:400;
+  }
+  h2.section-title em{font-style:italic;color:var(--red)}
+  .section-sub{
+    font-size:18px;color:var(--text-2);
+    max-width:720px;
+    margin-bottom:48px;
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:160px 32px 120px;
+    max-width:1280px;margin:0 auto;
+    border-bottom:1px solid var(--border);
+    z-index:2;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    top:0;right:-200px;
+    width:600px;height:600px;
+    background:radial-gradient(circle,rgba(232,0,61,0.15),transparent 70%);
+    pointer-events:none;z-index:-1;
+  }
+  .hero .tag{
+    font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:0.2em;
+    color:var(--red);
+    margin-bottom:48px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .hero .tag::before{
+    content:'';width:48px;height:1px;background:var(--red);
+  }
+  .hero h1{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(48px,8vw,116px);
+    line-height:0.95;letter-spacing:-0.03em;
+    margin-bottom:48px;font-weight:400;
+    max-width:1100px;
+  }
+  .hero h1 em{font-style:italic;color:var(--red)}
+  .hero .lead{
+    font-size:20px;color:var(--text-2);
+    max-width:720px;
+    margin-bottom:64px;line-height:1.5;
+  }
+  .hero-meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:32px;
+    padding:32px 0;
+    border-top:1px solid var(--border);
+  }
+  @media(max-width:768px){
+    .hero-meta{grid-template-columns:repeat(2,1fr);gap:24px}
+  }
+  .hero-meta .item .label{
+    font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:0.15em;
+    color:var(--text-3);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .hero-meta .item .value{
+    font-size:14px;color:var(--text);
+    font-weight:500;line-height:1.4;
+  }
+
+  /* ASK BANNER */
+  .ask-banner{
+    background:linear-gradient(90deg,#1a0008 0%,transparent 100%);
+    border-left:3px solid var(--red);
+    padding:24px 32px;
+    margin:48px 0 0;
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;
+  }
+  .ask-banner .ask-text{
+    font-family:'Instrument Serif',serif;
+    font-size:24px;
+  }
+  .ask-banner .ask-text em{color:var(--red);font-style:italic}
+  .ask-banner .ask-button{
+    background:var(--red);color:#fff;
+    padding:14px 24px;
+    text-decoration:none;
+    font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:0.1em;
+    border-radius:2px;
+    transition:background 0.2s;
+  }
+  .ask-banner .ask-button:hover{background:var(--red-bright)}
+
+  /* STAT GRID */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin:48px 0;
+  }
+  @media(max-width:768px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+  .stat-cell{background:var(--bg);padding:32px 28px}
+  .stat-cell .label{
+    font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:0.15em;
+    color:var(--text-3);text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .stat-cell .val{
+    font-family:'Instrument Serif',serif;
+    font-size:48px;line-height:1;
+    letter-spacing:-0.02em;margin-bottom:10px;
+  }
+  .stat-cell .val.red{color:var(--red)}
+  .stat-cell .sub{font-size:13px;color:var(--text-3)}
+
+  /* AMBASSADORS */
+  .ambassadors{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    gap:12px;margin:32px 0;
+  }
+  @media(max-width:900px){.ambassadors{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:600px){.ambassadors{grid-template-columns:repeat(2,1fr)}}
+  .amb{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:24px 20px;transition:all 0.2s;
+  }
+  .amb:hover{border-color:var(--red);transform:translateY(-2px)}
+  .amb .name{font-weight:500;font-size:15px;margin-bottom:4px}
+  .amb .sport{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.1em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .amb .reach{
+    font-family:'Instrument Serif',serif;
+    font-size:24px;color:var(--red);
+  }
+  .amb .reach-label{font-size:11px;color:var(--text-3);margin-top:2px}
+
+  /* AGE CHART */
+  .age-chart{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:40px 32px;margin:48px 0;
+  }
+  .chart-title{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    letter-spacing:0.15em;text-transform:uppercase;
+    margin-bottom:64px;
+  }
+  .age-bars{
+    display:flex;align-items:flex-end;gap:14px;
+    height:280px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:4px;position:relative;
+  }
+  .age-bars::before{
+    content:'';position:absolute;
+    left:0;right:0;bottom:83px;
+    border-bottom:1px dashed var(--border-2);
+  }
+  .age-bar{
+    flex:1;display:flex;flex-direction:column;
+    align-items:center;gap:10px;
+    height:100%;justify-content:flex-end;
+    position:relative;
+  }
+  .age-bar .bar{
+    width:100%;background:var(--border-2);
+    position:relative;transition:all 0.3s;
+  }
+  .age-bar.digital .bar{background:var(--red)}
+  .age-bar:hover .bar{filter:brightness(1.2)}
+  .age-bar .label{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-2);
+    text-align:center;letter-spacing:0.05em;
+  }
+  .age-bar .age{
+    font-family:'Instrument Serif',serif;
+    font-size:32px;
+    position:absolute;top:-48px;
+    left:50%;transform:translateX(-50%);
+  }
+  .age-bar.digital .age{color:var(--red)}
+  .age-legend{
+    display:flex;gap:32px;flex-wrap:wrap;
+    margin-top:32px;
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+  }
+  .age-legend span{display:flex;align-items:center;gap:8px}
+  .age-legend span::before{
+    content:'';width:12px;height:12px;background:var(--border-2);
+  }
+  .age-legend span.digital::before{background:var(--red)}
+
+  /* PULLQUOTE */
+  .pullquote{
+    margin:64px 0;
+    padding:48px 40px;
+    background:linear-gradient(135deg,var(--bg-2) 0%,var(--bg) 100%);
+    border-left:3px solid var(--red);
+    position:relative;
+  }
+  .pullquote::before{
+    content:'"';
+    position:absolute;top:-30px;left:24px;
+    font-family:'Instrument Serif',serif;
+    font-size:120px;color:var(--red);
+    opacity:0.3;line-height:1;
+  }
+  .pullquote p{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(22px,3vw,32px);
+    line-height:1.3;letter-spacing:-0.01em;
+    margin-bottom:24px;
+    position:relative;z-index:1;
+  }
+  .pullquote p em{font-style:italic}
+  .pullquote .attr{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    letter-spacing:0.1em;text-transform:uppercase;
+  }
+
+  /* SAUDI BLOCK */
+  .saudi-block{
+    display:grid;grid-template-columns:1fr 2fr;gap:48px;
+    margin:48px 0;align-items:start;
+  }
+  @media(max-width:900px){.saudi-block{grid-template-columns:1fr}}
+  .saudi-map{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:48px 40px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .saudi-map::after{
+    content:'';position:absolute;
+    bottom:-50px;right:-50px;
+    width:200px;height:200px;
+    background:radial-gradient(circle,rgba(232,0,61,0.1),transparent 70%);
+  }
+  .saudi-map .ksa{
+    font-family:'Instrument Serif',serif;
+    font-size:80px;color:var(--red);
+    line-height:1;margin-bottom:16px;
+  }
+  .saudi-map .ksa-sub{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    letter-spacing:0.15em;line-height:1.6;
+  }
+  .saudi-facts{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--border);
+    border:1px solid var(--border);
+  }
+  @media(max-width:768px){.saudi-facts{grid-template-columns:1fr}}
+  .saudi-fact{background:var(--bg);padding:32px 24px}
+  .saudi-fact .lbl{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.15em;text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .saudi-fact .big{
+    font-family:'Instrument Serif',serif;
+    font-size:42px;color:var(--red);
+    line-height:1;margin-bottom:10px;
+  }
+  .saudi-fact .det{font-size:13px;color:var(--text-2);line-height:1.5}
+
+  /* REVENUE CHART */
+  .rev-chart{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:40px 32px;margin:48px 0;
+  }
+  .rev-bars{
+    display:flex;align-items:flex-end;
+    gap:18px;height:240px;
+    margin:48px 0 24px;position:relative;
+  }
+  .rev-bar{
+    flex:1;display:flex;flex-direction:column;
+    align-items:center;gap:8px;position:relative;
+    height:100%;justify-content:flex-end;
+  }
+  .rev-bar .bar{
+    width:100%;background:var(--red-deep);transition:all 0.3s;
+    min-height:4px;
+  }
+  .rev-bar:nth-child(n+5) .bar{background:var(--red)}
+  .rev-bar:hover .bar{filter:brightness(1.2)}
+  .rev-bar .yr{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-3)}
+  .rev-bar .val{
+    font-family:'Instrument Serif',serif;
+    font-size:18px;
+    position:absolute;top:-32px;
+    left:50%;transform:translateX(-50%);
+    white-space:nowrap;
+  }
+  .rev-annot{
+    position:absolute;top:0;right:60px;
+    background:var(--red);color:#fff;
+    padding:10px 14px;
+    font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:0.1em;
+    line-height:1.5;text-align:center;
+  }
+
+  /* MONETIZATION */
+  .mon-chart{margin:48px 0}
+  .mon-row{
+    display:grid;
+    grid-template-columns:140px 1fr 100px;
+    gap:20px;align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .mon-row:last-child{border-bottom:none}
+  .mon-row .lbl{font-family:'Space Mono',monospace;font-size:13px;color:var(--text-2)}
+  .mon-row .track{height:32px;background:var(--surface);position:relative}
+  .mon-row .fill{height:100%;background:var(--text-2);transition:filter 0.2s}
+  .mon-row:hover .fill{filter:brightness(1.2)}
+  .mon-row.gap .fill{background:var(--red)}
+  .mon-row .val{font-family:'Instrument Serif',serif;font-size:24px;text-align:right}
+  .mon-row.gap .val{color:var(--red)}
+
+  /* ORGS */
+  .org-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;margin:32px 0;
+  }
+  .org{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:24px 20px;transition:all 0.2s;
+  }
+  .org:hover{border-color:var(--red);transform:translateY(-2px)}
+  .org .nm{font-weight:500;font-size:15px;margin-bottom:6px}
+  .org .det{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.05em;line-height:1.6;
+    margin-bottom:14px;
+  }
+  .org .foll{color:var(--red);font-family:'Instrument Serif',serif;font-size:22px}
+
+  /* CREATOR ECONOMY */
+  .ce-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:12px;margin:32px 0;
+  }
+  @media(max-width:768px){.ce-grid{grid-template-columns:1fr}}
+  .ce-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:36px 28px;
+  }
+  .ce-card .lbl{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.15em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .ce-card .big{
+    font-family:'Instrument Serif',serif;
+    font-size:64px;color:var(--red);
+    line-height:1;margin-bottom:12px;
+  }
+  .ce-card .det{font-size:13px;color:var(--text-2);line-height:1.5}
+  .ce-card .det small{color:var(--text-3);font-size:11px;display:block;margin-top:4px}
+
+  /* PLATFORM HOURS */
+  .plat-hrs{margin:32px 0}
+  .plat-row{
+    display:grid;
+    grid-template-columns:90px 1fr 160px;
+    gap:16px;align-items:center;
+    padding:14px 0;
+  }
+  .plat-row .lbl{font-family:'Space Mono',monospace;font-size:13px;color:var(--text-2)}
+  .plat-row .track{height:24px;background:var(--surface)}
+  .plat-row .fill{height:100%;background:var(--red)}
+  .plat-row .val{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    text-align:right;
+  }
+
+  /* CREATORS */
+  .creators{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;margin:32px 0;
+  }
+  .cr{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:20px;transition:border 0.2s;
+  }
+  .cr:hover{border-color:var(--red)}
+  .cr .nm{font-weight:500;font-size:14px;margin-bottom:4px}
+  .cr .det{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.05em;line-height:1.6;
+  }
+
+  /* SCREEN TIME */
+  .st-stack{
+    display:flex;height:72px;
+    margin:32px 0 16px;
+    border:1px solid var(--border);
+  }
+  .st-stack div{
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;
+    font-size:13px;color:#000;font-weight:700;
+    letter-spacing:0.05em;transition:filter 0.2s;
+  }
+  .st-stack div:hover{filter:brightness(1.1)}
+  .st-stack .s1{background:var(--green);flex:22}
+  .st-stack .s2{background:var(--amber);flex:27}
+  .st-stack .s3{background:#ff6d3d;flex:28;color:#fff}
+  .st-stack .s4{background:var(--red);flex:23;color:#fff}
+  .st-headline{
+    background:#1a0008;
+    border:1px solid var(--red);
+    padding:24px 28px;margin:24px 0;
+    text-align:center;
+  }
+  .st-headline .big{
+    font-family:'Instrument Serif',serif;
+    font-size:36px;color:var(--red);line-height:1.1;
+  }
+  .st-headline .sub{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    letter-spacing:0.1em;margin-top:10px;
+  }
+
+  /* MENTAL HEALTH CHART */
+  .mh-chart{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:40px 32px;margin:48px 0;
+  }
+  .mh-svg{width:100%;height:auto}
+  .mh-split{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:24px;margin-top:32px;
+  }
+  @media(max-width:768px){.mh-split{grid-template-columns:1fr}}
+  .mh-box{padding:28px;border:1px solid var(--border)}
+  .mh-box.high{background:#1a0008;border-color:var(--red)}
+  .mh-box.low{background:#001a1a;border-color:#1a6a5a}
+  .mh-box .head{
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.1em;
+    text-transform:uppercase;margin-bottom:14px;
+  }
+  .mh-box.high .head{color:var(--red)}
+  .mh-box.low .head{color:#4acfa8}
+  .mh-box .stat{
+    font-family:'Instrument Serif',serif;
+    font-size:32px;margin-bottom:6px;
+  }
+  .mh-box.high .stat{color:var(--red)}
+  .mh-box.low .stat{color:#4acfa8}
+  .mh-box .det{font-size:13px;color:var(--text-2)}
+  .mh-box .src{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-4);margin-top:12px;
+  }
+
+  /* LANCET */
+  .lancet{
+    margin:48px 0;
+    padding:36px 40px;
+    border-top:1px solid var(--red);
+    border-bottom:1px solid var(--red);
+    background:linear-gradient(90deg,rgba(232,0,61,0.05),transparent);
+  }
+  .lancet p{
+    font-family:'Instrument Serif',serif;
+    font-size:28px;line-height:1.35;
+    margin-bottom:18px;
+  }
+  .lancet .cite{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);letter-spacing:0.1em;
+  }
+
+  /* ESPORTS BARS */
+  .esp-study{
+    background:#0d0620;border:1px solid #3a2a60;
+    padding:24px 28px;margin:32px 0;
+    font-family:'Space Mono',monospace;
+    font-size:12px;color:#c4b8ff;
+    letter-spacing:0.05em;line-height:1.7;
+  }
+  .esp-bars{margin:32px 0}
+  .esp-row{
+    display:grid;
+    grid-template-columns:160px 1fr 80px;
+    gap:20px;align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .esp-row:last-child{border-bottom:none}
+  .esp-row .lbl{font-family:'Space Mono',monospace;font-size:13px;color:var(--text-2)}
+  .esp-row .track{height:28px;background:var(--surface)}
+  .esp-row .fill{height:100%}
+  .esp-row.e1 .fill{background:var(--red)}
+  .esp-row.e2 .fill{background:#ff6d3d}
+  .esp-row.e3 .fill{background:var(--amber)}
+  .esp-row.e4 .fill{background:#ff6d3d}
+  .esp-row.e5 .fill{background:#666}
+  .esp-row.e6 .fill{background:var(--green);max-width:2%}
+  .esp-row .val{font-family:'Instrument Serif',serif;font-size:24px;text-align:right}
+
+  /* BURNOUT */
+  .burnout{
+    background:#1a0008;
+    border:1px solid var(--red);
+    padding:32px 36px;margin:32px 0;
+  }
+  .burnout .head{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:#ff6b8a;
+    letter-spacing:0.15em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .burnout .big{
+    font-family:'Instrument Serif',serif;
+    font-size:44px;color:var(--red);
+    line-height:1;margin-bottom:14px;
+  }
+  .burnout .det{font-size:14px;color:var(--text-2);margin-bottom:10px}
+  .burnout .src{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-4);
+  }
+
+  /* SLEEP */
+  .sleep{margin:32px 0}
+  .sleep-track{
+    position:relative;height:88px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:6px;
+  }
+  .sleep-gamer{
+    position:absolute;
+    left:calc((6 - 4) / (9 - 4) * 100%);
+    top:-28px;
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--red);
+    transform:translateX(-50%);
+  }
+  .sleep-gamer::after{
+    content:'';position:absolute;
+    left:50%;top:24px;
+    width:2px;height:88px;background:var(--red);
+  }
+  .sleep-rec{
+    position:absolute;
+    left:calc((7 - 4) / (9 - 4) * 100%);
+    right:6px;top:6px;bottom:6px;
+    background:rgba(0,214,143,0.15);
+    border:1px solid var(--green);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--green);
+    text-align:center;
+  }
+  .sleep-hours{
+    display:flex;justify-content:space-between;
+    margin-top:14px;
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+  }
+
+  /* TWITCH */
+  .tw-grid{
+    display:grid;grid-template-columns:2fr 1fr;
+    gap:32px;margin:32px 0;align-items:start;
+  }
+  @media(max-width:768px){.tw-grid{grid-template-columns:1fr}}
+  .tw-bars .row{
+    display:grid;
+    grid-template-columns:80px 1fr 70px;
+    gap:16px;align-items:center;
+    padding:12px 0;
+  }
+  .tw-bars .row .lbl{font-family:'Space Mono',monospace;font-size:13px;color:var(--text-2)}
+  .tw-bars .row .track{height:30px;background:var(--surface)}
+  .tw-bars .row .fill{height:100%;background:var(--red);opacity:0.7}
+  .tw-bars .row.big .fill{opacity:1}
+  .tw-bars .row .val{
+    font-family:'Space Mono',monospace;
+    font-size:13px;color:var(--text-2);
+    text-align:right;
+  }
+  .tw-summary{
+    background:var(--surface);
+    border:1px solid var(--red);
+    padding:40px 28px;text-align:center;
+  }
+  .tw-summary .big{
+    font-family:'Instrument Serif',serif;
+    font-size:88px;color:var(--red);line-height:1;
+  }
+  .tw-summary .det{
+    font-size:14px;color:var(--text-2);
+    margin-top:12px;line-height:1.6;
+  }
+
+  /* HEALTH ARC */
+  .arc-chart{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:40px 32px;margin:48px 0;
+  }
+  .arc-svg{width:100%;height:auto}
+  .arc-note{
+    background:var(--surface);
+    padding:28px 32px;
+    margin-top:32px;
+    border-left:3px solid var(--blue);
+  }
+  .arc-note p{
+    font-family:'Instrument Serif',serif;
+    font-size:21px;line-height:1.4;
+  }
+  .arc-note p em{color:var(--red);font-style:italic}
+
+  /* CONSEQUENCES */
+  .cons-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:var(--border);
+    border:1px solid var(--border);margin:32px 0;
+  }
+  @media(max-width:900px){.cons-grid{grid-template-columns:repeat(2,1fr)}}
+  .cons{background:var(--bg);padding:32px 28px;min-height:300px}
+  .cons .head{
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.15em;
+    text-transform:uppercase;margin-bottom:20px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--border);
+  }
+  .cons.c1 .head{color:var(--red)}
+  .cons.c2 .head{color:var(--amber)}
+  .cons.c3 .head{color:var(--purple)}
+  .cons.c4 .head{color:var(--green)}
+  .cons ul{
+    list-style:none;font-size:13px;
+    color:var(--text-2);line-height:1.9;
+  }
+  .cons li{padding-left:16px;position:relative}
+  .cons li::before{content:'—';position:absolute;left:0;color:var(--text-4)}
+
+  /* PROJECTIONS */
+  .proj-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:12px;margin:32px 0;
+  }
+  @media(max-width:768px){.proj-grid{grid-template-columns:1fr}}
+  .proj{
+    background:var(--surface);padding:36px 32px;
+    border-top:3px solid var(--red);
+  }
+  .proj .big{
+    font-family:'Instrument Serif',serif;
+    font-size:56px;color:var(--red);
+    line-height:1;margin-bottom:14px;
+  }
+  .proj .det{font-size:14px;color:var(--text-2);line-height:1.5;margin-bottom:12px}
+  .proj .src{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-4)}
+
+  /* THE PROPOSAL */
+  .proposal-intro{
+    margin:48px 0;padding:40px 36px;
+    background:linear-gradient(135deg,#1a0008 0%,var(--bg) 100%);
+    border:1px solid var(--red);
+  }
+  .proposal-intro p{
+    font-family:'Instrument Serif',serif;
+    font-size:24px;line-height:1.4;
+  }
+  .proposal-intro p strong{color:var(--red);font-weight:400}
+
+  .extensions{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:16px;margin:48px 0;
+  }
+  @media(max-width:900px){.extensions{grid-template-columns:1fr}}
+  .ext{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:36px 32px;transition:all 0.2s;
+  }
+  .ext:hover{border-color:var(--red)}
+  .ext .num{
+    font-family:'Space Mono',monospace;
+    font-size:12px;color:var(--red);
+    letter-spacing:0.2em;margin-bottom:14px;
+  }
+  .ext .name{
+    font-family:'Instrument Serif',serif;
+    font-size:34px;line-height:1;margin-bottom:18px;
+  }
+  .ext .desc{
+    font-size:14px;color:var(--text-2);
+    line-height:1.6;margin-bottom:24px;
+  }
+  .ext .features{
+    list-style:none;
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    line-height:1.9;
+    border-top:1px solid var(--border);
+    padding-top:18px;
+  }
+  .ext .features li::before{content:'· ';color:var(--red)}
+
+  /* DASHBOARD MOCKUPS */
+  .dash-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:16px;margin:48px 0;
+  }
+  @media(max-width:1024px){.dash-grid{grid-template-columns:1fr}}
+  .dash{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:24px;min-height:480px;
+  }
+  .dash .tbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:20px;
+  }
+  .dash .wmk{
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.15em;color:var(--text-2);
+  }
+  .dash .wmk span{color:var(--red)}
+  .dash .mode{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.1em;text-transform:uppercase;
+  }
+
+  /* GAMER MODE */
+  .gm-top{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+  .gm-recovery{background:var(--bg);padding:24px;text-align:center;border:1px solid var(--border)}
+  .gm-recovery .score{font-family:'Instrument Serif',serif;font-size:56px;color:var(--green);line-height:1}
+  .gm-recovery .lbl{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.1em;margin-top:8px}
+  .gm-recovery .tag{font-size:12px;color:var(--green);margin-top:8px;font-weight:500}
+  .gm-metrics{display:flex;flex-direction:column;gap:8px;justify-content:center}
+  .gm-pill{
+    background:var(--bg);border:1px solid var(--border);
+    padding:10px 14px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Space Mono',monospace;font-size:11px;
+  }
+  .gm-pill .nm{color:var(--text-3)}
+  .gm-pill.green .val{color:var(--green)}
+  .gm-pill.amber .val{color:var(--amber)}
+  .gm-pill.blue .val{color:var(--blue)}
+  .gm-section{background:var(--bg);border:1px solid var(--border);padding:16px;margin-bottom:12px}
+  .gm-section .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
+  .gm-game{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;padding:5px 0;font-size:12px}
+  .gm-game .track{height:6px;background:var(--surface);border-radius:3px;overflow:hidden}
+  .gm-game .fill{height:100%}
+  .gm-game.r1 .fill{background:var(--red);width:80%}
+  .gm-game.r2 .fill{background:var(--amber);width:60%}
+  .gm-game.r3 .fill{background:var(--red);width:85%}
+  .gm-game.r4 .fill{background:var(--green);width:20%}
+  .gm-coach{background:var(--bg);border:1px solid var(--red);padding:14px 16px}
+  .gm-coach .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+  .gm-coach p{font-size:12px;color:var(--text-2);line-height:1.5}
+
+  /* CREATOR MODE */
+  .cm-top{
+    display:grid;grid-template-columns:60px 1fr;
+    gap:16px;align-items:center;
+    padding:14px 16px;background:var(--bg);
+    border:1px solid var(--border);margin-bottom:16px;
+  }
+  .cm-avatar{
+    width:48px;height:48px;
+    background:linear-gradient(135deg,var(--red),#ff3366);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Instrument Serif',serif;font-size:24px;color:#fff;
+  }
+  .cm-info .nm{font-family:'Instrument Serif',serif;font-size:20px}
+  .cm-info .st{font-family:'Space Mono',monospace;font-size:10px;color:var(--amber);letter-spacing:0.1em}
+  .cm-vocal{background:var(--bg);border:1px solid var(--border);padding:16px;margin-bottom:12px}
+  .cm-vocal .head{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
+  .cm-vocal .head .pct{color:var(--red)}
+  .cm-bar{height:14px;background:var(--surface);position:relative;border-radius:2px;overflow:hidden}
+  .cm-bar-fill{height:100%;background:var(--red);width:78%}
+  .cm-bar-limit{position:absolute;left:60%;top:-2px;bottom:-2px;width:1px;border-left:1px dashed var(--text-3)}
+  .cm-vocal .sub{font-size:11px;color:var(--text-3);margin-top:8px}
+  .cm-ret{background:var(--bg);border:1px solid var(--border);padding:16px;margin-bottom:12px}
+  .cm-ret .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
+  .cm-cal{background:var(--bg);border:1px solid var(--border);padding:14px 16px;margin-bottom:12px}
+  .cm-cal .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
+  .cm-days{display:flex;gap:4px}
+  .cm-day{flex:1;padding:8px 2px;text-align:center;font-family:'Space Mono',monospace;font-size:10px;border-radius:2px}
+  .cm-day.g{background:rgba(0,214,143,0.2);color:var(--green)}
+  .cm-day.a{background:rgba(255,184,0,0.2);color:var(--amber)}
+  .cm-day.r{background:rgba(232,0,61,0.2);color:var(--red)}
+  .cm-day.o{background:var(--surface);color:var(--text-3)}
+  .cm-coach{background:var(--bg);border:1px solid var(--red);padding:14px 16px}
+  .cm-coach .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+  .cm-coach p{font-size:11px;color:var(--text-2);line-height:1.5}
+
+  /* TEAMS OPTIC */
+  .tm-head{display:flex;gap:16px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:16px;flex-wrap:wrap}
+  .tm-badge{display:inline-block;padding:4px 10px;background:#0a2d12;color:#4acf7f;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em}
+  .tm-head .title{font-family:'Space Mono',monospace;font-size:11px;color:var(--text-2);letter-spacing:0.1em}
+  .tm-roster{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
+  @media(max-width:1100px){.tm-roster{grid-template-columns:repeat(2,1fr)}}
+  .tm-player{background:var(--bg);border:1px solid var(--border);padding:14px 10px;text-align:center}
+  .tm-player.warn{border-color:var(--red)}
+  .tm-player.top{border-color:var(--green)}
+  .tm-player .nm{font-size:12px;font-weight:500;margin-bottom:2px}
+  .tm-player .role{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-3);margin-bottom:10px}
+  .tm-player .score{font-family:'Instrument Serif',serif;font-size:32px;line-height:1}
+  .tm-player.good .score{color:var(--green)}
+  .tm-player.mid .score{color:var(--amber)}
+  .tm-player.warn .score{color:var(--red)}
+  .tm-player.top .score{color:var(--green)}
+  .tm-player .stats{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-3);line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+  .tm-coach{background:var(--bg);border:1px solid var(--red);padding:14px 16px}
+  .tm-coach .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+  .tm-coach p{font-size:11px;color:var(--text-2);line-height:1.6}
+
+  /* AGENCY */
+  .ag-table{width:100%;font-size:11px;margin-bottom:16px;border-collapse:collapse}
+  .ag-table th{text-align:left;padding:10px 6px;font-family:'Space Mono',monospace;font-size:9px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+  .ag-table td{padding:10px 6px;border-bottom:1px solid var(--border);font-size:11px}
+  .ag-table .live{color:var(--red);font-weight:500}
+  .ag-table .off{color:var(--text-3)}
+  .ag-table .sched{color:var(--blue)}
+  .ag-table .pill{display:inline-block;padding:2px 6px;font-family:'Space Mono',monospace;font-size:9px;border-radius:2px}
+  .ag-table .pill.g{background:rgba(0,214,143,0.2);color:var(--green)}
+  .ag-table .pill.a{background:rgba(255,184,0,0.2);color:var(--amber)}
+  .ag-table .pill.r{background:rgba(232,0,61,0.2);color:var(--red)}
+  .ag-alerts{background:var(--bg);border:1px solid var(--red);padding:14px 16px}
+  .ag-alerts .head{font-family:'Space Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
+  .ag-alert{padding:7px 0;font-size:11px;color:var(--text-2);line-height:1.5;border-bottom:1px solid var(--border)}
+  .ag-alert:last-child{border-bottom:none}
+  .ag-alert .tag{font-family:'Space Mono',monospace;font-size:9px;margin-right:6px;padding:1px 5px}
+  .ag-alert .tag.r{background:rgba(232,0,61,0.2);color:var(--red)}
+  .ag-alert .tag.a{background:rgba(255,184,0,0.2);color:var(--amber)}
+
+  /* AI MOCKUPS */
+  .ai-mock{
+    margin:48px 0;
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:24px;
+  }
+  .ai-mock-head{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:20px;flex-wrap:wrap;gap:12px;
+  }
+  .ai-mock-head .label{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--red);
+    letter-spacing:0.15em;text-transform:uppercase;
+  }
+  .ai-mock-head .note{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);letter-spacing:0.05em;
+  }
+  .ai-mock img{
+    width:100%;height:auto;display:block;
+    border:1px solid var(--border);
+  }
+
+  /* MVP IFRAME */
+  .mvp-section{
+    margin:64px 0;
+  }
+  .mvp-head{
+    display:flex;justify-content:space-between;
+    align-items:flex-end;flex-wrap:wrap;gap:16px;
+    margin-bottom:24px;
+  }
+  .mvp-head .left .label{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--red);
+    letter-spacing:0.2em;margin-bottom:8px;
+  }
+  .mvp-head .left h3{
+    font-family:'Instrument Serif',serif;
+    font-size:36px;line-height:1;
+  }
+  .mvp-head .left p{
+    font-size:14px;color:var(--text-3);
+    margin-top:8px;max-width:600px;
+  }
+  .mvp-head .right{
+    display:flex;gap:12px;
+  }
+  .mvp-link{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-2);
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid var(--border-2);
+    transition:all 0.2s;
+    letter-spacing:0.1em;
+  }
+  .mvp-link:hover{border-color:var(--red);color:var(--red)}
+  .mvp-link.primary{
+    background:var(--red);color:#fff;border-color:var(--red);
+  }
+  .mvp-link.primary:hover{background:var(--red-bright);color:#fff}
+  .mvp-frame{
+    width:100%;
+    height:760px;
+    border:1px solid var(--border);
+    background:var(--bg-2);
+    position:relative;
+  }
+  .mvp-frame iframe{
+    width:100%;height:100%;
+    border:none;display:block;
+  }
+  @media(max-width:768px){
+    .mvp-frame{height:520px}
+  }
+
+  /* HARDWARE / COLLAB STRAPS */
+  .hw-intro{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:32px 36px;margin:32px 0;
+    font-size:15px;color:var(--text-2);
+    line-height:1.7;
+  }
+  .hw-intro strong{color:var(--text);font-weight:500}
+
+  .hw-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;margin:32px 0;
+  }
+  @media(max-width:900px){.hw-grid{grid-template-columns:1fr}}
+  .hw-card{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:0;overflow:hidden;
+    transition:all 0.2s;
+    display:flex;flex-direction:column;
+  }
+  .hw-card:hover{border-color:var(--red);transform:translateY(-2px)}
+  .hw-image{
+    width:100%;
+    aspect-ratio:1;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+  }
+  .hw-image img{
+    width:100%;height:100%;
+    object-fit:cover;display:block;
+  }
+  .hw-content{
+    padding:28px 24px;
+    flex:1;display:flex;flex-direction:column;
+  }
+  .hw-card .tag{
+    display:inline-block;
+    font-family:'Space Mono',monospace;
+    font-size:9px;letter-spacing:0.15em;
+    text-transform:uppercase;
+    padding:5px 10px;border-radius:2px;
+    margin-bottom:14px;align-self:flex-start;
+  }
+  .hw-card.s1 .tag{background:#400010;color:#ff6b8a}
+  .hw-card.s2 .tag{background:#2d0d40;color:#d4a3ff}
+  .hw-card.s3 .tag{background:#1a2d10;color:#a8d77f}
+  .hw-card .nm{
+    font-family:'Instrument Serif',serif;
+    font-size:30px;margin-bottom:6px;line-height:1.1;
+  }
+  .hw-card .type{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.1em;text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .hw-card .desc{
+    font-size:13px;color:var(--text-2);
+    line-height:1.6;margin-bottom:18px;
+  }
+  .hw-card .specs{
+    font-size:12px;color:var(--text-3);
+    line-height:1.7;
+    padding-top:16px;
+    border-top:1px solid var(--border);
+    margin-top:auto;
+  }
+  .hw-card .specs div{padding:3px 0;position:relative;padding-left:14px}
+  .hw-card .specs div::before{content:'›';position:absolute;left:0;color:var(--red)}
+
+  /* LIFESTYLE ROW — context shots paired with the bands above */
+  .lifestyle-row{
+    margin:48px 0 32px;
+  }
+  .lifestyle-eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.2em;
+    color:var(--text-3);text-transform:uppercase;
+    margin-bottom:20px;
+    display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  .lifestyle-eyebrow .scroll-hint{
+    color:var(--text-4);font-size:10px;letter-spacing:0.15em;
+    display:none;
+  }
+  .lifestyle-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .lifestyle-card{
+    position:relative;
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    overflow:hidden;
+    transition:all 0.3s;
+  }
+  .lifestyle-card:hover{border-color:var(--red)}
+  .lifestyle-card img{
+    width:100%;height:100%;
+    aspect-ratio:1225/326;
+    object-fit:cover;display:block;
+    transition:transform 0.4s;
+  }
+  .lifestyle-card:hover img{transform:scale(1.03)}
+  .lifestyle-card .label{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    padding:14px 18px;
+    background:linear-gradient(0deg,rgba(0,0,0,0.85),rgba(0,0,0,0));
+    color:var(--text);
+    font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:0.15em;
+    text-transform:uppercase;
+    display:flex;justify-content:space-between;
+    align-items:flex-end;
+  }
+  .lifestyle-card .label .tag{
+    color:var(--red);font-weight:700;
+  }
+  .lifestyle-card .label .ctx{
+    color:var(--text-3);font-size:9px;
+  }
+  /* On mobile/narrow: become horizontal scroll snap carousel */
+  @media(max-width:900px){
+    .lifestyle-grid{
+      grid-template-columns:none;
+      grid-auto-flow:column;
+      grid-auto-columns:85%;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-padding:20px;
+      gap:12px;
+      padding-bottom:8px;
+      margin:0 -20px;
+      padding-left:20px;padding-right:20px;
+    }
+    .lifestyle-card{
+      scroll-snap-align:start;
+      min-width:0;
+    }
+    .lifestyle-card img{aspect-ratio:16/9}
+    .lifestyle-eyebrow .scroll-hint{display:inline}
+    /* Hide scrollbar but keep functionality */
+    .lifestyle-grid::-webkit-scrollbar{height:4px}
+    .lifestyle-grid::-webkit-scrollbar-track{background:var(--surface)}
+    .lifestyle-grid::-webkit-scrollbar-thumb{background:var(--border-2)}
+  }
+
+  /* SCROLLABLE SKETCHES */
+  .sketches-section{
+    margin:48px 0;
+  }
+  .sketches-intro{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:28px 32px;
+    margin:24px 0;
+    font-size:14px;color:var(--text-2);
+    line-height:1.6;
+  }
+  .sketches-intro strong{color:var(--text)}
+  .sketches-controls{
+    display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;
+    gap:16px;margin-bottom:16px;
+  }
+  .sketches-controls .meta{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    letter-spacing:0.1em;
+  }
+  .sketches-viewer{
+    background:#1a1815;
+    border:1px solid var(--border);
+    padding:20px;
+    max-height:80vh;
+    overflow-y:auto;
+    scroll-snap-type:y mandatory;
+    scrollbar-width:thin;
+    scrollbar-color:var(--border-2) var(--surface);
+  }
+  .sketches-viewer::-webkit-scrollbar{width:8px}
+  .sketches-viewer::-webkit-scrollbar-track{background:var(--surface)}
+  .sketches-viewer::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:4px}
+  .sketches-viewer::-webkit-scrollbar-thumb:hover{background:var(--red)}
+  .sketch-page{
+    margin-bottom:20px;
+    scroll-snap-align:start;
+    background:#fff;
+    box-shadow:0 4px 24px rgba(0,0,0,0.4);
+  }
+  .sketch-page:last-child{margin-bottom:0}
+  .sketch-page img{width:100%;height:auto;display:block}
+  .sketch-page-label{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.15em;
+    padding:8px 0;text-transform:uppercase;
+  }
+
+  /* HEADSET FEATURE */
+  .feature-image{
+    margin:32px 0;
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    padding:24px;
+  }
+  .feature-image img{
+    width:100%;height:auto;display:block;
+    max-height:600px;
+    object-fit:contain;
+  }
+  .feature-image-caption{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    text-align:center;margin-top:16px;
+    letter-spacing:0.1em;
+  }
+
+  /* REFRAME */
+  .reframe{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:1px;background:var(--border);
+    border:1px solid var(--border);margin:48px 0;
+  }
+  @media(max-width:768px){.reframe{grid-template-columns:1fr}}
+  .reframe-col{background:var(--bg);padding:48px 36px}
+  .reframe-col.without{background:#0d0206}
+  .reframe-col.with{background:#001a11}
+  .reframe-col .head{
+    font-family:'Space Mono',monospace;
+    font-size:13px;letter-spacing:0.15em;
+    text-transform:uppercase;margin-bottom:24px;
+  }
+  .reframe-col.without .head{color:var(--red)}
+  .reframe-col.with .head{color:var(--green)}
+  .reframe-col ul{list-style:none;font-size:14px;line-height:1.8}
+  .reframe-col li{padding:7px 0 7px 18px;position:relative;color:var(--text-2)}
+  .reframe-col li::before{content:'';position:absolute;left:0;top:18px;width:10px;height:1px;background:var(--text-4)}
+  .reframe-col .tagline{
+    margin-top:24px;padding-top:24px;
+    border-top:1px solid var(--border);
+    font-family:'Instrument Serif',serif;font-size:22px;
+  }
+  .reframe-col.without .tagline{color:var(--red)}
+  .reframe-col.with .tagline{color:var(--green)}
+
+  /* BOTTOM LINE */
+  .bottom-line{
+    margin:64px 0;
+    padding:64px 48px;
+    background:linear-gradient(135deg,#0d0206 0%,#000 100%);
+    border:1px solid var(--red);
+    text-align:center;
+  }
+  .bottom-line p{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(22px,3vw,32px);
+    line-height:1.4;margin-bottom:18px;
+  }
+  .bottom-line p:last-of-type{color:var(--red)}
+  .bottom-line .signoff{
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.15em;
+    color:var(--text-3);margin-top:36px;text-transform:uppercase;
+  }
+
+  /* ABOUT */
+  .about{
+    background:var(--bg-2);
+    padding:80px 0;margin-top:80px;
+    border-top:1px solid var(--border);
+    position:relative;z-index:2;
+  }
+  .about-inner{max-width:900px;margin:0 auto;padding:0 32px}
+  .about h3{
+    font-family:'Instrument Serif',serif;
+    font-size:48px;margin-bottom:32px;line-height:1.1;
+  }
+  .about p{font-size:17px;color:var(--text-2);line-height:1.7;margin-bottom:20px}
+  .about p strong{color:var(--text)}
+  .about .credentials{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:16px;margin-top:48px;
+  }
+  @media(max-width:768px){.about .credentials{grid-template-columns:1fr}}
+  .about .cred{
+    background:var(--surface);
+    padding:24px;border-left:2px solid var(--red);
+  }
+  .about .cred .lbl{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.15em;text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .about .cred .val{font-size:14px;color:var(--text);line-height:1.5}
+
+  /* AUTHENTICITY NOTE */
+  .auth-note{
+    background:var(--surface);
+    border:1px solid var(--border-2);
+    padding:24px 32px;margin:32px 0;
+    font-family:'Space Mono',monospace;
+    font-size:12px;color:var(--text-3);
+    line-height:1.7;
+    border-left:3px solid var(--text-4);
+  }
+
+  /* DATA TABLE */
+  .data-table{
+    width:100%;margin:32px 0;
+    font-size:13px;border-collapse:collapse;
+  }
+  .data-table th{
+    text-align:left;padding:14px 16px;
+    background:var(--surface);
+    font-family:'Space Mono',monospace;
+    font-size:10px;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--text-3);
+    border-bottom:1px solid var(--border-2);
+  }
+  .data-table td{
+    padding:14px 16px;
+    border-bottom:1px solid var(--border);
+    color:var(--text-2);
+  }
+  .data-table tr:hover td{background:rgba(232,0,61,0.03)}
+  .data-table .val{font-family:'Instrument Serif',serif;font-size:20px;color:var(--red)}
+  .data-table .src{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-4)}
+  .data-table-wrap{overflow-x:auto}
+
+  /* FINAL CTA */
+  .final-cta{
+    padding:120px 32px;text-align:center;
+    background:radial-gradient(ellipse at center,rgba(232,0,61,0.08),transparent 70%);
+    position:relative;z-index:2;
+  }
+  .final-cta h2{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(40px,6vw,72px);
+    line-height:0.95;letter-spacing:-0.02em;
+    margin-bottom:32px;
+  }
+  .final-cta h2 em{font-style:italic;color:var(--red)}
+  .final-cta p{
+    font-size:18px;color:var(--text-2);
+    max-width:600px;margin:0 auto 48px;
+    line-height:1.6;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;max-width:720px;margin:0 auto;
+  }
+  @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+  .contact-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:28px 24px;
+    text-decoration:none;color:inherit;
+    transition:all 0.2s;
+  }
+  .contact-card:hover{
+    border-color:var(--red);transform:translateY(-2px);
+  }
+  .contact-card .lbl{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-3);
+    letter-spacing:0.15em;text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .contact-card .val{
+    font-size:15px;color:var(--text);
+    word-break:break-word;
+  }
+
+  /* FOOTER */
+  footer{
+    padding:64px 32px 48px;
+    border-top:1px solid var(--border);
+    background:#000;position:relative;z-index:2;
+  }
+  footer .inner{
+    max-width:1280px;margin:0 auto;
+    display:flex;justify-content:space-between;
+    align-items:flex-start;
+    gap:48px;flex-wrap:wrap;
+  }
+  footer .meta{
+    font-family:'Space Mono',monospace;
+    font-size:11px;color:var(--text-3);
+    letter-spacing:0.05em;line-height:1.8;max-width:480px;
+  }
+  footer .meta strong{color:var(--text);font-weight:400}
+  footer .copyright{
+    font-family:'Space Mono',monospace;
+    font-size:10px;color:var(--text-4);letter-spacing:0.1em;
+  }
+
+  /* SECONDARY NAV — quick links bar inside hero */
+  .quick-links{
+    display:flex;gap:8px;flex-wrap:wrap;
+    margin-top:48px;
+  }
+  .quick-link{
+    background:transparent;
+    border:1px solid var(--border-2);
+    color:var(--text-2);
+    padding:10px 16px;
+    text-decoration:none;
+    font-family:'Space Mono',monospace;
+    font-size:11px;letter-spacing:0.1em;
+    transition:all 0.2s;
+  }
+  .quick-link:hover{
+    border-color:var(--red);color:var(--red);
+    background:rgba(232,0,61,0.05);
+  }
+
+  /* PRINT */
+  @media print{
+    nav,.mvp-section,.sketches-section{display:none}
+    body{background:#fff;color:#000}
+    section{break-after:page;border:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="brand" aria-label="Back to top">WHOOP <span>×</span> ATTENTION ECONOMY PIVOT</a>
+  <div class="chapters">
+    <a href="#today">01 TODAY</a>
+    <a href="#crisis">02 CRISIS</a>
+    <a href="#esports">03 ESPORTS</a>
+    <a href="#proposal">04 PROPOSAL</a>
+    <a href="#hardware">05 HARDWARE</a>
+    <a href="#sketches">06 SKETCHES</a>
+    <a href="#about">07 AUTHOR</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle">MENU</button>
+  <a href="#contact" class="cta">CONTACT</a>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#today">01 · WHOOP TODAY</a>
+  <a href="#crisis">02 · THE CRISIS</a>
+  <a href="#esports">03 · ESPORTS DATA</a>
+  <a href="#proposal">04 · THE PROPOSAL</a>
+  <a href="#hardware">05 · HARDWARE</a>
+  <a href="#sketches">06 · ORIGINAL SKETCHES</a>
+  <a href="#about">07 · ABOUT THE AUTHOR</a>
+  <a href="#contact">CONTACT</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="tag">UNSOLICITED STRATEGIC PITCH · 2026</div>
+  <h1>WHOOP built a <em>$10.1B company</em> on the attention of a fading audience.<br/>The next 500M fans are already wearing it.</h1>
+  <p class="lead">A data-driven case for extending WHOOP's platform into esports, streaming, and the creator economy. Three software extensions, three collab strap concepts, one institutional B2B tier — built by someone from inside the community it serves.</p>
+
+  <div class="hero-meta">
+    <div class="item">
+      <div class="label">Author</div>
+      <div class="value">Abdullah Fakhri</div>
+    </div>
+    <div class="item">
+      <div class="label">Background</div>
+      <div class="value">Bio sci · Esports player & coach · First-gen Arab American</div>
+    </div>
+    <div class="item">
+      <div class="label">Sources</div>
+      <div class="value">CDC · NIH · Lancet · NBER · BMC Sports Science · PwC</div>
+    </div>
+    <div class="item">
+      <div class="label">The Ask</div>
+      <div class="value">20 minutes</div>
+    </div>
+  </div>
+
+  <div class="ask-banner">
+    <div class="ask-text">Will Ahmed tweeted last week that <em>esports players are already wearing WHOOP.</em></div>
+    <a href="#proposal" class="ask-button">SEE THE PROPOSAL →</a>
+  </div>
+
+  <div class="quick-links">
+    <a href="#proposal" class="quick-link">→ THE PROPOSAL</a>
+    <a href="#hardware" class="quick-link">→ COLLAB STRAPS</a>
+    <a href="https://v0-performance-dashboard-eta.vercel.app/" target="_blank" rel="noopener" class="quick-link">→ LIVE MVP PROTOTYPE</a>
+    <a href="#sketches" class="quick-link">→ ORIGINAL SKETCHES</a>
+    <a href="#contact" class="quick-link">→ CONTACT</a>
+  </div>
+</div>
+
+<!-- 01 — WHOOP TODAY -->
+<section id="today">
+  <div class="eyebrow">01 — THE SETUP</div>
+  <h2 class="section-title">WHOOP today.<br/>Traditional sports is their world.</h2>
+  <p class="section-sub">The playbook worked. Embed with the highest-attention athletes in traditional sports, and their fans follow. But their audience is aging up — and the next 500M fans aren't watching the Premier League on a Saturday afternoon.</p>
+
+  <div class="stat-grid">
+    <div class="stat-cell"><div class="label">Valuation</div><div class="val">$10.1B</div><div class="sub">Series G · March 2026</div></div>
+    <div class="stat-cell"><div class="label">Members</div><div class="val">2.5M</div><div class="sub">global subscribers</div></div>
+    <div class="stat-cell"><div class="label">Bookings run rate</div><div class="val">$1.1B</div><div class="sub">2025 exit</div></div>
+    <div class="stat-cell"><div class="label">Employees</div><div class="val">800+</div><div class="sub">+600 roles in 2026</div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:64px">Current ambassador roster — each athlete unlocks a market</div>
+  <div class="ambassadors">
+    <div class="amb"><div class="name">Cristiano Ronaldo</div><div class="sport">Football</div><div class="reach">600M</div><div class="reach-label">followers</div></div>
+    <div class="amb"><div class="name">Aryna Sabalenka</div><div class="sport">Tennis</div><div class="reach">WTA #1</div><div class="reach-label">world ranking</div></div>
+    <div class="amb"><div class="name">Michael Phelps</div><div class="sport">Swimming</div><div class="reach">23×</div><div class="reach-label">Olympic gold</div></div>
+    <div class="amb"><div class="name">Rory McIlroy</div><div class="sport">Golf</div><div class="reach">5×</div><div class="reach-label">major winner</div></div>
+    <div class="amb"><div class="name">LeBron James</div><div class="sport">Basketball</div><div class="reach">4×</div><div class="reach-label">NBA champion</div></div>
+  </div>
+
+  <div class="age-chart">
+    <div class="chart-title">Average audience age — traditional sports vs. digital entertainment</div>
+    <div class="age-bars">
+      <div class="age-bar"><span class="age">50</span><div class="bar" style="height:91%"></div><span class="label">NFL</span></div>
+      <div class="age-bar"><span class="age">54</span><div class="bar" style="height:98%"></div><span class="label">Golf</span></div>
+      <div class="age-bar"><span class="age">48</span><div class="bar" style="height:87%"></div><span class="label">Tennis</span></div>
+      <div class="age-bar"><span class="age">42</span><div class="bar" style="height:76%"></div><span class="label">Soccer</span></div>
+      <div class="age-bar digital"><span class="age">26</span><div class="bar" style="height:47%"></div><span class="label">Esports</span></div>
+      <div class="age-bar digital"><span class="age">26</span><div class="bar" style="height:47%"></div><span class="label">Streaming</span></div>
+      <div class="age-bar digital"><span class="age">22</span><div class="bar" style="height:40%"></div><span class="label">IRL stream</span></div>
+    </div>
+    <div class="age-legend">
+      <span>Traditional sports (WHOOP's current world)</span>
+      <span class="digital">Esports, streaming, IRL (where attention is accumulating)</span>
+    </div>
+  </div>
+
+  <p style="font-size:16px;color:var(--text-2);max-width:820px;margin:32px 0">72% of Twitch users are under 34. The entire esports audience averages 26 years old. This is where attention is accumulating — and WHOOP's current roster has no footprint in it.</p>
+
+  <div class="eyebrow" style="margin-top:96px">01.B — THE SAUDI BRIDGE</div>
+  <h2 class="section-title" style="font-size:clamp(32px,5vw,52px)">Where WHOOP's money already points.</h2>
+  <p class="section-sub">Qatar Investment Authority, Mubadala, 2PointZero. The GCC sovereign funds are already in the company — and they are the same governments making the largest bets in gaming and esports.</p>
+
+  <div class="saudi-block">
+    <div class="saudi-map">
+      <div class="ksa">KSA</div>
+      <div class="ksa-sub">KINGDOM OF SAUDI ARABIA<br/>Al-Nassr partner · Doha lab 2026</div>
+    </div>
+    <div class="saudi-facts">
+      <div class="saudi-fact"><div class="lbl">KSA Gaming 2024</div><div class="big">$1.2B</div><div class="det">revenue · 25.81M gamers</div></div>
+      <div class="saudi-fact"><div class="lbl">GDP target</div><div class="big">$13.3B</div><div class="det">esports by 2030 · Vision 2030</div></div>
+      <div class="saudi-fact"><div class="lbl">EWC Riyadh 2025</div><div class="big">750M</div><div class="det">online viewers · 3M on-site</div></div>
+    </div>
+  </div>
+  <p style="font-size:16px;color:var(--text-2);max-width:820px">Saudi Arabia is already investing billions into the exact niche WHOOP has not touched. The money trail is drawn. The question is whether WHOOP follows it.</p>
+
+  <div class="eyebrow" style="margin-top:96px">01.C — THE OPPORTUNITY GAP</div>
+  <h2 class="section-title" style="font-size:clamp(32px,5vw,52px)">Esports: massive audience, undermonetized.</h2>
+
+  <div class="rev-chart">
+    <div class="chart-title">Global esports revenue (USD, billions) · WHOOP entry window opens NOW</div>
+    <div class="rev-bars">
+      <div class="rev-bar"><span class="val">$1.0B</span><div class="bar" style="height:17%"></div><span class="yr">2020</span></div>
+      <div class="rev-bar"><span class="val">$1.4B</span><div class="bar" style="height:24%"></div><span class="yr">2022</span></div>
+      <div class="rev-bar"><span class="val">$1.8B</span><div class="bar" style="height:31%"></div><span class="yr">2024</span></div>
+      <div class="rev-bar"><span class="val">$2.6B</span><div class="bar" style="height:44%"></div><span class="yr">2026p</span></div>
+      <div class="rev-bar"><span class="val">$4.0B</span><div class="bar" style="height:68%"></div><span class="yr">2028p</span></div>
+      <div class="rev-bar"><span class="val">$5.9B</span><div class="bar" style="height:100%"></div><span class="yr">2030p</span></div>
+      <div class="rev-annot">WHOOP<br/>ENTRY<br/>WINDOW</div>
+    </div>
+    <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3)">Source: MarkNtel Advisors · Statista Market Forecast · PwC Strategy& Passion Into Profit</div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:48px">Revenue per viewer — the monetization gap</div>
+  <div class="mon-chart">
+    <div class="mon-row"><div class="lbl">NFL</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">$51</div></div>
+    <div class="mon-row"><div class="lbl">Premier League</div><div class="track"><div class="fill" style="width:63%"></div></div><div class="val">$32</div></div>
+    <div class="mon-row"><div class="lbl">Bundesliga</div><div class="track"><div class="fill" style="width:22%"></div></div><div class="val">$11</div></div>
+    <div class="mon-row gap"><div class="lbl">Esports</div><div class="track"><div class="fill" style="width:4%"></div></div><div class="val">$2</div></div>
+  </div>
+  <p style="font-size:16px;color:var(--text-2);max-width:820px;margin-top:24px"><strong style="color:var(--red)">500M fans · only $2 per viewer.</strong> The audience is there. The monetization architecture is not. A subscription wearable with genuine health data is exactly the product that fills this gap.</p>
+
+  <div class="eyebrow" style="margin-top:64px">Key esports orgs — Saudi-backed, massive youth reach</div>
+  <div class="org-grid">
+    <div class="org"><div class="nm">FaZe Clan</div><div class="det">GameSquare owned · LA</div><div class="foll">90M+</div></div>
+    <div class="org"><div class="nm">OpTic Gaming</div><div class="det">Envy Gaming · TX</div><div class="foll">40M+</div></div>
+    <div class="org"><div class="nm">100 Thieves</div><div class="det">LA · lifestyle</div><div class="foll">30M+</div></div>
+    <div class="org"><div class="nm">T1 · Faker</div><div class="det">Korean powerhouse</div><div class="foll">40M YT subs</div></div>
+    <div class="org"><div class="nm">Team Liquid</div><div class="det">Netherlands/LA</div><div class="foll">70+ titles</div></div>
+    <div class="org"><div class="nm">Team Falcons</div><div class="det">Saudi-based · high investment</div><div class="foll">EWC winner</div></div>
+  </div>
+</section>
+
+<!-- 02 — CRISIS -->
+<section id="crisis">
+  <div class="eyebrow">02 — THE CRISIS WE ARE BUILDING FOR</div>
+  <h2 class="section-title">The generation that grew up online <em>is already sick.</em></h2>
+
+  <div class="pullquote">
+    <p>As my ranking, placements, and earnings climbed, my physical and mental health declined. More hours in the chair. Less sleep. Higher stress. Better at the game. <em>Worse at everything else.</em></p>
+    <div class="attr">Collegiate Call of Duty player & coach · Biological sciences graduate</div>
+  </div>
+
+  <p style="font-size:16px;color:var(--text-2);max-width:820px">This is not anecdote. Every major health database now confirms the same pattern across the entire generation. The data is sourced from CDC, NIH, Lancet, NBER, and peer-reviewed studies in PMC, BMC Sports Science, and the Journal of Sports Sciences.</p>
+
+  <div class="eyebrow" style="margin-top:96px">02.A — THE CREATOR ECONOMY IS LARGER THAN ALL OF ESPORTS</div>
+
+  <div class="ce-grid">
+    <div class="ce-card"><div class="lbl">Creator economy (global)</div><div class="big">$205B</div><div class="det">2024 global market · projected $1.35T by 2033<small>Grand View Research 2024</small></div></div>
+    <div class="ce-card"><div class="lbl">Twitch alone</div><div class="big">$1.8B</div><div class="det">2024 revenue · 240M MAU · 72% under 34<small>Twitch / Nielsen 2024</small></div></div>
+    <div class="ce-card"><div class="lbl">IRL streaming growth</div><div class="big">+186%</div><div class="det">watch-time growth · fastest segment<small>Streams Charts 2025</small></div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:64px">Live streaming platform hours watched — 2024 (billions)</div>
+  <div class="plat-hrs">
+    <div class="plat-row"><div class="lbl">Twitch</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">20.8B hrs</div></div>
+    <div class="plat-row"><div class="lbl">YouTube</div><div class="track"><div class="fill" style="width:42%;opacity:0.8"></div></div><div class="val">8.8B hrs</div></div>
+    <div class="plat-row"><div class="lbl">Kick</div><div class="track"><div class="fill" style="width:22%;opacity:0.6"></div></div><div class="val">4.5B · +131% YoY</div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:64px">Key creator targets — IRL & gaming streamers</div>
+  <div class="creators">
+    <div class="cr"><div class="nm">IShowSpeed</div><div class="det">51M+ YouTube<br/>IRL world tours<br/>Soccer-obsessed</div></div>
+    <div class="cr"><div class="nm">Marlon</div><div class="det">2025's IRL streamer<br/>Street/event IRL</div></div>
+    <div class="cr"><div class="nm">Stable Ronaldo</div><div class="det">Ex-Fortnite Pro<br/>NBA & creator class</div></div>
+    <div class="cr"><div class="nm">Adin Ross</div><div class="det">Serious reach<br/>High profile collabs<br/>Kick exclusive</div></div>
+    <div class="cr"><div class="nm">xQc</div><div class="det">Former pro<br/>Ex-Overwatch<br/>Streamer of the decade<br/>$100M Kick deal</div></div>
+    <div class="cr"><div class="nm">Kai Cenat</div><div class="det">Most subscribed<br/>on Twitch<br/>Subathon king</div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:96px">02.B — SCREEN TIME · HOW MANY HOURS TEENAGERS ACTUALLY SPEND</div>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.05em;margin-bottom:16px">SOURCE: CDC National Health Interview Survey–Teen (NHIS-Teen) July 2021 – Dec 2023</p>
+
+  <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--text-2);margin-bottom:8px">% of US teenagers (12–17) by daily screen time (excluding schoolwork)</div>
+  <div class="st-stack">
+    <div class="s1">22% &lt;2h</div>
+    <div class="s2">27% 2–4h</div>
+    <div class="s3">28% 4–6h</div>
+    <div class="s4">23% 6h+</div>
+  </div>
+  <div class="st-headline">
+    <div class="big">50.4% of US teens (12–17) exceed 4 hours daily screen time</div>
+    <div class="sub">CDC 2024 · WHO / Canada / Australia limit is 2 hours · 78% of US teens exceed it</div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:96px">02.C — YOUTH MENTAL HEALTH COLLAPSE</div>
+  <h2 class="section-title" style="font-size:clamp(32px,5vw,52px)">The collapse since 2012–2017.</h2>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.05em;margin-bottom:32px">SOURCES: NBER Working Paper 2025 · YRBSS CDC · Lancet Public Health 2024</p>
+
+  <div class="mh-chart">
+    <div class="chart-title">% of US high school students (14–18) reporting "sad or hopeless every day for 2 weeks"</div>
+    <svg class="mh-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="40" x2="780" y2="40" stroke="#222" stroke-dasharray="4 4"/>
+      <line x1="60" y1="110" x2="780" y2="110" stroke="#222" stroke-dasharray="4 4"/>
+      <line x1="60" y1="180" x2="780" y2="180" stroke="#222" stroke-dasharray="4 4"/>
+      <line x1="60" y1="250" x2="780" y2="250" stroke="#222" stroke-dasharray="4 4"/>
+      <text x="50" y="45" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="end">60%</text>
+      <text x="50" y="115" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="end">40%</text>
+      <text x="50" y="185" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="end">20%</text>
+      <text x="50" y="255" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="end">0%</text>
+      <line x1="460" y1="40" x2="460" y2="260" stroke="#E8003D" stroke-dasharray="4 4" opacity="0.5"/>
+      <text x="466" y="60" fill="#E8003D" font-size="11" font-family="Space Mono">2012–2017 inflection</text>
+      <text x="466" y="72" fill="#E8003D" font-size="11" font-family="Space Mono">smartphones ubiquitous</text>
+      <polyline points="100,134 220,130 340,127 460,116 580,102 700,74" fill="none" stroke="#E8003D" stroke-width="2.5"/>
+      <circle cx="100" cy="134" r="4" fill="#E8003D"/>
+      <circle cx="460" cy="116" r="4" fill="#E8003D"/>
+      <circle cx="700" cy="74" r="5" fill="#E8003D"/>
+      <text x="710" y="78" fill="#E8003D" font-size="13" font-family="Instrument Serif">53% females</text>
+      <polyline points="100,187 220,185 340,183 460,180 580,175 700,168" fill="none" stroke="#4a9eff" stroke-width="2.5"/>
+      <circle cx="100" cy="187" r="4" fill="#4a9eff"/>
+      <circle cx="700" cy="168" r="5" fill="#4a9eff"/>
+      <text x="710" y="172" fill="#4a9eff" font-size="13" font-family="Instrument Serif">28% males</text>
+      <text x="100" y="285" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">1999</text>
+      <text x="220" y="285" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">2005</text>
+      <text x="340" y="285" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">2011</text>
+      <text x="460" y="285" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">2015</text>
+      <text x="580" y="285" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">2019</text>
+      <text x="700" y="285" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">2023</text>
+    </svg>
+
+    <div class="mh-split">
+      <div class="mh-box high">
+        <div class="head">Teens with 4h+ screen time</div>
+        <div class="stat">27.1% anxiety</div>
+        <div class="stat">25.9% depression</div>
+        <div class="src">CDC NHIS-Teen 2024</div>
+      </div>
+      <div class="mh-box low">
+        <div class="head">Teens with &lt;2h screen time</div>
+        <div class="stat">12.3% anxiety</div>
+        <div class="stat">8.7% depression</div>
+        <div class="src">CDC NHIS-Teen 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lancet">
+    <p>"More than 1 billion people aged 10–24 are at risk of poor health outcomes by 2030 — at least half the global adolescent population."</p>
+    <div class="cite">— Lancet Commission on Adolescent Health and Wellbeing · August 2025</div>
+  </div>
+</section>
+
+<!-- 03 — ESPORTS HEALTH -->
+<section id="esports">
+  <div class="eyebrow">03 — ESPORTS & GAMING</div>
+  <h2 class="section-title">Documented physical health consequences.</h2>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.05em;margin-bottom:32px">SOURCES: BMC Sports Science 2024 · PMC Systematic Review 2021 · Frontiers in Sports and Active Living 2024</p>
+
+  <div class="esp-study">
+    <strong>STUDY:</strong> 65 collegiate esports players · 9 US + Canadian universities · practicing 3–10h/day<br/>
+    <span style="color:#8a8aaa">BMC Sports Science 2024 / Difrancisco-Donoghue 2019 · n=65 · cross-sectional survey</span>
+  </div>
+
+  <div class="eyebrow" style="margin-top:32px">% of esports players reporting physical complaints</div>
+  <div class="esp-bars">
+    <div class="esp-row e1"><div class="lbl">Eye fatigue</div><div class="track"><div class="fill" style="width:56%"></div></div><div class="val">56%</div></div>
+    <div class="esp-row e2"><div class="lbl">Neck + back</div><div class="track"><div class="fill" style="width:42%"></div></div><div class="val">42%</div></div>
+    <div class="esp-row e3"><div class="lbl">Wrist pain</div><div class="track"><div class="fill" style="width:36%"></div></div><div class="val">36%</div></div>
+    <div class="esp-row e4"><div class="lbl">Hand pain</div><div class="track"><div class="fill" style="width:32%"></div></div><div class="val">32%</div></div>
+    <div class="esp-row e5"><div class="lbl">No exercise</div><div class="track"><div class="fill" style="width:40%"></div></div><div class="val">40%</div></div>
+    <div class="esp-row e6"><div class="lbl">Saw a doctor</div><div class="track"><div class="fill" style="width:2%"></div></div><div class="val" style="color:var(--green)">2%</div></div>
+  </div>
+  <p style="font-size:14px;color:var(--text-2);margin-top:24px">Only <strong style="color:var(--green)">2%</strong> sought medical attention despite widespread injury. The crisis is real and unaddressed.</p>
+
+  <div class="burnout">
+    <div class="head">Burnout Study · Journal of Sports Sciences 2024</div>
+    <div class="big">38.2% High Burnout Risk</div>
+    <div class="det">453 competitive esports players (top 40% in-game rank) · average age 23</div>
+    <div class="det">Experiencing physical exhaustion, reduced accomplishment, and depersonalization.</div>
+    <div class="src">"Burnout profiles among esports players" · J Sports Sci 2024</div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:80px">03.B — SLEEP DEPRIVATION</div>
+  <h2 style="font-family:'Instrument Serif',serif;font-size:32px;margin-bottom:16px">The silent performance killer.</h2>
+  <p style="font-size:14px;color:var(--text-2);margin-bottom:24px">Average sleep in competitive gamers vs. National Sleep Foundation recommendations</p>
+  <div class="sleep">
+    <div class="sleep-track">
+      <div class="sleep-gamer">avg gamer: ~6h</div>
+      <div class="sleep-rec">recommended: 8–10h (teens) · 7–9h (adults)</div>
+    </div>
+    <div class="sleep-hours">
+      <span>4h</span><span>5h</span><span>6h</span><span>7h</span><span>8h</span><span>9h</span>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:96px">03.C — WHO IS ACTUALLY WATCHING</div>
+  <h2 class="section-title" style="font-size:clamp(32px,5vw,52px)">The audience is overwhelmingly young.</h2>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.05em;margin-bottom:32px">SOURCES: Twitch Statistics 2025 · Esports Charts · Nielsen 2024</p>
+
+  <div class="tw-grid">
+    <div class="tw-bars">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);margin-bottom:16px;letter-spacing:0.1em">TWITCH VIEWER AGE DISTRIBUTION (% OF PLATFORM USERS)</div>
+      <div class="row"><div class="lbl">13–17</div><div class="track"><div class="fill" style="width:14%"></div></div><div class="val">14%</div></div>
+      <div class="row big"><div class="lbl">18–24</div><div class="track"><div class="fill" style="width:34%"></div></div><div class="val">34%</div></div>
+      <div class="row"><div class="lbl">25–34</div><div class="track"><div class="fill" style="width:24%"></div></div><div class="val">24%</div></div>
+      <div class="row"><div class="lbl">35–44</div><div class="track"><div class="fill" style="width:15%"></div></div><div class="val">15%</div></div>
+      <div class="row"><div class="lbl">45+</div><div class="track"><div class="fill" style="width:13%"></div></div><div class="val">13%</div></div>
+    </div>
+    <div class="tw-summary">
+      <div class="big">72%</div>
+      <div class="det">of Twitch users are under 34 · average user age: 26 years old</div>
+    </div>
+  </div>
+  <p style="font-size:16px;color:var(--text-2);max-width:820px;margin-top:32px">If 48% of the audience is under 24 — and 14% are still legally teenagers — this is a public health conversation, not just an entertainment one.</p>
+
+  <div class="eyebrow" style="margin-top:96px">03.D — THE COMPETITIVE PLAYER HEALTH ARC</div>
+  <h2 class="section-title" style="font-size:clamp(32px,5vw,52px)">Personal. Documented. Unaddressed.</h2>
+  <p class="section-sub">As esports training volume increases, the same health indicators that make you better at the game make your body worse.</p>
+
+  <div class="arc-chart">
+    <div class="chart-title">Competitive rank / skill (↑) vs. health metrics (↓) as training hours increase</div>
+    <svg class="arc-svg" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="40" x2="780" y2="40" stroke="#222" stroke-dasharray="4 4"/>
+      <line x1="60" y1="120" x2="780" y2="120" stroke="#222" stroke-dasharray="4 4"/>
+      <line x1="60" y1="200" x2="780" y2="200" stroke="#222" stroke-dasharray="4 4"/>
+      <line x1="380" y1="30" x2="380" y2="215" stroke="#E8003D" stroke-dasharray="3 3" opacity="0.4"/>
+      <rect x="390" y="40" width="220" height="52" fill="#1a0008" stroke="#E8003D" stroke-width="0.5"/>
+      <text x="400" y="56" fill="#ff6b8a" font-size="11" font-family="Space Mono">3–4h threshold</text>
+      <text x="400" y="72" fill="#ff6b8a" font-size="11" font-family="Space Mono">shoulder pain begins &gt;3h</text>
+      <text x="400" y="86" fill="#ff6b8a" font-size="11" font-family="Space Mono">RSI risk rises sharply</text>
+      <polyline points="100,200 280,165 380,135 580,85 720,55" fill="none" stroke="#00d68f" stroke-width="3"/>
+      <circle cx="100" cy="200" r="4" fill="#00d68f"/>
+      <circle cx="720" cy="55" r="5" fill="#00d68f"/>
+      <text x="730" y="58" fill="#00d68f" font-size="13" font-family="Instrument Serif">rank ↑</text>
+      <polyline points="100,60 280,90 380,120 580,170 720,205" fill="none" stroke="#E8003D" stroke-width="2.5" stroke-dasharray="6 3"/>
+      <circle cx="720" cy="205" r="4" fill="#E8003D"/>
+      <text x="730" y="208" fill="#E8003D" font-size="12" font-family="Instrument Serif">sleep ↓</text>
+      <polyline points="100,70 280,100 380,130 580,180 720,215" fill="none" stroke="#ffb800" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="730" y="218" fill="#ffb800" font-size="12" font-family="Instrument Serif">HRV ↓</text>
+      <polyline points="100,80 280,115 380,150 580,195 720,225" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="3 3"/>
+      <text x="730" y="228" fill="#888" font-size="11" font-family="Instrument Serif">activity ↓</text>
+      <text x="100" y="255" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">0h</text>
+      <text x="280" y="255" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">2h/day</text>
+      <text x="380" y="255" fill="#E8003D" font-size="11" font-family="Space Mono" text-anchor="middle">4h/day</text>
+      <text x="580" y="255" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">6h/day</text>
+      <text x="720" y="255" fill="#7a7a7a" font-size="11" font-family="Space Mono" text-anchor="middle">8h+</text>
+    </svg>
+
+    <div class="arc-note">
+      <p>The competitive player is <em>not</em> irrational. They're making a rational short-term tradeoff: better rank now, worse body later. WHOOP shouldn't tell them to stop playing — it should tell them exactly <em>what the tradeoff costs, in real-time,</em> so they can manage it.</p>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:96px">03.E — MENTAL HEALTH CONSEQUENCES</div>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.05em;margin-bottom:32px">SOURCES: Industrial Psychiatry Journal 2020 · PMC Systematic Review · WHO ICD-11</p>
+
+  <div class="cons-grid">
+    <div class="cons c1"><div class="head">Physical</div><ul><li>Eye fatigue, blurry vision</li><li>Low back pain, tension headaches</li><li>Wrist pain</li><li>Hand pain</li><li>Poor posture</li><li>Carpal tunnel</li></ul></div>
+    <div class="cons c2"><div class="head">Psychological</div><ul><li>Depression</li><li>Anxiety</li><li>Apathy</li><li>Burnout (38%)</li><li>Sleep disturbance</li><li>Aggression</li><li>Social withdrawal</li><li>Emotional dysregulation</li></ul></div>
+    <div class="cons c3"><div class="head">Addiction</div><ul><li>WHO ICD-11: Gaming Disorder classified since 2018</li><li>Reduced control</li><li>Prioritize gaming over work, health</li><li>Continue despite negative consequences</li></ul></div>
+    <div class="cons c4"><div class="head">No Monitoring</div><ul><li>Only 2% of esports players with injuries sought medical help</li><li>Zero orgs provide biometric monitoring at amateur level</li><li>No wearable speaks their language</li></ul></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:96px">03.F — THE 2030 PROJECTION WITHOUT INTERVENTION</div>
+  <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.05em;margin-bottom:32px">SOURCES: Lancet Commission 2025 · NBER 2025 · Global Wellness Institute 2025</p>
+
+  <div class="proj-grid">
+    <div class="proj"><div class="big">42M</div><div class="det">healthy life-years lost to mental disorders or suicide among adolescents by 2030</div><div class="src">Lancet Commission 2025 · +2M vs 2015</div></div>
+    <div class="proj"><div class="big">1B+</div><div class="det">adolescents at risk of poor health outcomes by 2030 — half the global adolescent population</div><div class="src">Lancet Commission Aug 2025</div></div>
+    <div class="proj"><div class="big">$500B+</div><div class="det">creator economy by 2027 — populated by people with no health infrastructure built around their lifestyle</div><div class="src">Grand View Research 2024</div></div>
+  </div>
+</section>
+
+<!-- 04 — PROPOSAL -->
+<section id="proposal">
+  <div class="eyebrow">04 — THE PROPOSAL</div>
+  <h2 class="section-title">Three software extensions.<br/>Same WHOOP. New audience.</h2>
+
+  <div class="proposal-intro">
+    <p><strong>No new brand. No new hardware.</strong> Three software extensions built on top of WHOOP's existing platform, Whoop Coach AI, and Whoop Unite framework — each tailored to an audience Whoop doesn't currently serve.</p>
+  </div>
+
+  <div class="extensions">
+    <div class="ext">
+      <div class="num">01 / GAMER MODE</div>
+      <div class="name">Personal performance for the competitive player</div>
+      <div class="desc">A new dashboard module within the existing WHOOP app — designed for ranked players who treat their game like a sport.</div>
+      <ul class="features">
+        <li>Tilt risk scoring (cortisol-based)</li>
+        <li>Wrist load + RSI prevention</li>
+        <li>Per-game stress profiling</li>
+        <li>Session-aware Whoop Coach</li>
+        <li>Sleep vs. rank correlation</li>
+        <li>Flow window prediction</li>
+      </ul>
+    </div>
+    <div class="ext">
+      <div class="num">02 / CREATOR MODE</div>
+      <div class="name">Streamer health for the always-on creator</div>
+      <div class="desc">A new dashboard module designed for full-time content creators — vocal load, burnout, and live stream biometrics.</div>
+      <ul class="features">
+        <li>Vocal health monitoring</li>
+        <li>Burnout calendar tracking</li>
+        <li>Live OBS biometric overlay</li>
+        <li>Viewer retention vs. HR correlation</li>
+        <li>Session intensity heat-mapping</li>
+        <li>Content schedule AI</li>
+      </ul>
+    </div>
+    <div class="ext">
+      <div class="num">03 / TEAMS &amp; AGENCY</div>
+      <div class="name">Whoop Unite extended for esports orgs &amp; talent agencies</div>
+      <div class="desc">The institutional B2B tier — fleet dashboards for esports coaching staffs and creator talent agencies.</div>
+      <ul class="features">
+        <li>Esports org coaching dashboards</li>
+        <li>Pre-match readiness alerts</li>
+        <li>Talent agency fleet view</li>
+        <li>Burnout risk monitoring</li>
+        <li>Revenue-at-risk modeling</li>
+        <li>Travel/LAN load planning</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE PROTOTYPE -->
+  <div class="mvp-section">
+    <div class="mvp-head">
+      <div class="left">
+        <div class="label">04.B — LIVE INTERACTIVE PROTOTYPE</div>
+        <h3>Built. Deployed. Working.</h3>
+        <p>This is the live MVP version of the Whoop Gamer Mode dashboard concept — vibe-coded and deployed to Vercel. Click through it, scroll the data, see the product working in your browser.</p>
+      </div>
+      <div class="right">
+        <a href="https://v0-performance-dashboard-eta.vercel.app/" target="_blank" rel="noopener" class="mvp-link primary">OPEN FULL SCREEN ↗</a>
+      </div>
+    </div>
+    <div class="mvp-frame">
+      <iframe src="https://v0-performance-dashboard-eta.vercel.app/" loading="lazy" title="WHOOP Gamer Mode — Live MVP Prototype"></iframe>
+    </div>
+  </div>
+
+  <!-- HTML DASHBOARD MOCKUPS -->
+  <div class="eyebrow" style="margin-top:64px">04.C — UI MOCKUPS · IN-APP DASHBOARD CONCEPTS</div>
+
+  <div class="dash-grid">
+    <div class="dash">
+      <div class="tbar">
+        <div class="wmk">WHOOP <span>·</span> GAMER MODE</div>
+        <div class="mode">Personal</div>
+      </div>
+      <div class="gm-top">
+        <div class="gm-recovery">
+          <div class="score">87</div>
+          <div class="lbl">RECOVERY</div>
+          <div class="tag">You're ranked ready</div>
+        </div>
+        <div class="gm-metrics">
+          <div class="gm-pill green"><span class="nm">TILT RISK</span><span class="val">LOW</span></div>
+          <div class="gm-pill amber"><span class="nm">WRIST LOAD</span><span class="val">42/100</span></div>
+          <div class="gm-pill blue"><span class="nm">FLOW WINDOW</span><span class="val">2–5 PM</span></div>
+        </div>
+      </div>
+      <div class="gm-section">
+        <div class="head">Session Stress Log · last 7 days</div>
+        <div class="gm-game r1"><span>Valorant Ranked</span><div class="track"><div class="fill"></div></div></div>
+        <div class="gm-game r2"><span>Valorant Unranked</span><div class="track"><div class="fill"></div></div></div>
+        <div class="gm-game r3"><span>League of Legends</span><div class="track"><div class="fill"></div></div></div>
+        <div class="gm-game r4"><span>Minecraft</span><div class="track"><div class="fill"></div></div></div>
+      </div>
+      <div class="gm-coach">
+        <div class="head">WHOOP COACH</div>
+        <p>Your last 3 tilt events occurred after hour 4 of ranked Valorant. Consider a session limit of 3.5 hours on weeknights.</p>
+      </div>
+    </div>
+
+    <div class="dash">
+      <div class="tbar">
+        <div class="wmk">WHOOP <span>·</span> CREATOR MODE</div>
+        <div class="mode">IShowSpeed</div>
+      </div>
+      <div class="cm-top">
+        <div class="cm-avatar">⚡</div>
+        <div class="cm-info">
+          <div class="nm">IShowSpeed</div>
+          <div class="st">STREAM READINESS: MODERATE</div>
+        </div>
+      </div>
+      <div class="cm-vocal">
+        <div class="head"><span>VOCAL LOAD TRACKER</span><span class="pct">78%</span></div>
+        <div class="cm-bar"><div class="cm-bar-fill"></div><div class="cm-bar-limit"></div></div>
+        <div class="sub">11.2h cumulative talk time this week. Rest voice before tonight.</div>
+      </div>
+      <div class="cm-ret">
+        <div class="head">Viewer Retention vs Your HR</div>
+        <svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:60px">
+          <polyline points="10,60 60,55 110,45 160,25 210,20 260,30 310,40 360,55 390,65" fill="none" stroke="#E8003D" stroke-width="2"/>
+          <polyline points="10,65 60,58 110,48 160,30 210,25 260,35 310,45 360,58 390,68" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+          <text x="215" y="14" fill="#E8003D" font-size="9" font-family="Space Mono" text-anchor="middle">847 CCV peak</text>
+        </svg>
+      </div>
+      <div class="cm-cal">
+        <div class="head">7-Day Burnout Calendar</div>
+        <div class="cm-days">
+          <div class="cm-day g">M</div>
+          <div class="cm-day g">T</div>
+          <div class="cm-day a">W</div>
+          <div class="cm-day a">T</div>
+          <div class="cm-day r">F</div>
+          <div class="cm-day o">S</div>
+          <div class="cm-day o">S</div>
+        </div>
+      </div>
+      <div class="cm-coach">
+        <div class="head">WHOOP COACH</div>
+        <p>Vocal load above threshold 3 days running. Max recommended stream tonight: 4 hours. High-readiness window: Tue–Wed.</p>
+      </div>
+    </div>
+
+    <div class="dash">
+      <div class="tbar">
+        <div class="wmk">WHOOP TEAMS <span>·</span> OPTIC GAMING</div>
+        <div class="mode">CoD Roster · Scrim Day</div>
+      </div>
+      <div class="tm-head">
+        <span class="tm-badge">OpTic Gaming</span>
+        <span class="title">Call of Duty · Coach JP · April 8, 2026</span>
+      </div>
+      <div class="tm-roster">
+        <div class="tm-player good"><div class="nm">Shotzzy</div><div class="role">Entry Frag</div><div class="score">91</div><div class="stats">HRV 72 · 7h8m<br/>TILT: LOW</div></div>
+        <div class="tm-player mid"><div class="nm">Dashy</div><div class="role">Main AR</div><div class="score">78</div><div class="stats">HRV 58 · 5h52<br/>ELEVATED</div></div>
+        <div class="tm-player good"><div class="nm">Merc</div><div class="role">Flex</div><div class="score">88</div><div class="stats">HRV 69 · 7h30<br/>TILT: LOW</div></div>
+        <div class="tm-player warn"><div class="nm">Huke</div><div class="role">Sniper</div><div class="score">64</div><div class="stats">HRV 44 · 5h10<br/>HIGH RISK</div></div>
+      </div>
+      <div class="tm-coach">
+        <div class="head">WHOOP COACH · Pregame Recommendation for Coach JP</div>
+        <p>Shotzzy and Merc cleared for full scrim block. Dashy: light scrim only — elevated tilt risk, sleep debt 1.2h. Huke: full rest recommended before LAN travel Friday. Squad average recovery 80 — within tournament baseline.</p>
+      </div>
+    </div>
+
+    <div class="dash">
+      <div class="tbar">
+        <div class="wmk">WHOOP AGENCY <span>·</span> TALENT ROSTER</div>
+        <div class="mode">14 Creators · 3 Alerts</div>
+      </div>
+      <table class="ag-table">
+        <thead><tr><th>Creator</th><th>Status</th><th>Rec</th><th>Vocal</th><th>Burnout</th></tr></thead>
+        <tbody>
+          <tr><td>Kai Cenat</td><td class="live">LIVE</td><td><span class="pill g">91</span></td><td><span class="pill a">74</span></td><td><span class="pill g">OK ↑</span></td></tr>
+          <tr><td>IShowSpeed</td><td class="off">OFF</td><td><span class="pill a">68</span></td><td><span class="pill g">82</span></td><td><span class="pill a">WATCH →</span></td></tr>
+          <tr><td>xQc</td><td class="off">OFF</td><td><span class="pill r">51</span></td><td><span class="pill r">38</span></td><td><span class="pill r">RISK ↓</span></td></tr>
+          <tr><td>Pokimane</td><td class="sched">SCHED</td><td><span class="pill g">88</span></td><td><span class="pill g">85</span></td><td><span class="pill g">OPTIMAL ↑</span></td></tr>
+          <tr><td>Adin Ross</td><td class="sched">SCHED</td><td><span class="pill a">62</span></td><td><span class="pill r">44</span></td><td><span class="pill a">WATCH ↓</span></td></tr>
+          <tr><td>Valkyrae</td><td class="live">LIVE</td><td><span class="pill g">79</span></td><td><span class="pill a">70</span></td><td><span class="pill g">OK ↑</span></td></tr>
+          <tr><td>Marlon</td><td class="live">LIVE</td><td><span class="pill a">55</span></td><td><span class="pill a">60</span></td><td><span class="pill a">WATCH →</span></td></tr>
+          <tr><td>Ludwig</td><td class="off">OFF</td><td><span class="pill g">92</span></td><td><span class="pill g">90</span></td><td><span class="pill g">OPTIMAL ↑</span></td></tr>
+        </tbody>
+      </table>
+      <div class="ag-alerts">
+        <div class="head">Active Alerts · 3</div>
+        <div class="ag-alert"><span class="tag r">RED</span> xQc — Vocal score below 40 for 3rd consecutive day. Intervention recommended before tonight's planned 8-hour stream.</div>
+        <div class="ag-alert"><span class="tag a">AMBER</span> Adin Ross — HRV 7-day trend declining. Burnout risk window opening. Schedule rest day this week.</div>
+        <div class="ag-alert"><span class="tag a">AMBER</span> Marlon — 5 consecutive stream days, recovery declining. Suggest BRB protocol and vocal rest tonight.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:96px">04.D — THE REFRAME</div>
+  <h2 class="section-title">WHOOP's next chapter is a public health play.</h2>
+
+  <div class="reframe">
+    <div class="reframe-col without">
+      <div class="head">— Without WHOOP intervention</div>
+      <ul>
+        <li>500M esports / streaming fans</li>
+        <li>Average age 26 — 14% still teens</li>
+        <li>7h+ daily screen time</li>
+        <li>56% experience eye fatigue</li>
+        <li>42% neck / back pain</li>
+        <li>38% burnout in competitive gamers</li>
+        <li>0 wearables speak their language</li>
+        <li>2% seek medical attention</li>
+        <li>Mental health declining globally</li>
+        <li>No data, no monitoring, no signal</li>
+      </ul>
+      <div class="tagline">→ the crisis compounds silently.</div>
+    </div>
+    <div class="reframe-col with">
+      <div class="head">+ With WHOOP's help</div>
+      <ul>
+        <li>500M fans get a wearable that speaks ranked, sessions, burnout, cortisol signals</li>
+        <li>Wrist load = RSI prevention</li>
+        <li>Vocal health = streamer protection</li>
+        <li>Sleep vs. rank correlation → behavioral change</li>
+        <li>Pro orgs get team dashboards</li>
+        <li>Agencies protect talent</li>
+        <li>Teens get the biohacking framing that makes health feel like a win</li>
+      </ul>
+      <div class="tagline">→ WHOOP owns the next generation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — HARDWARE -->
+<section id="hardware">
+  <div class="eyebrow">05 — COLLAB STRAP CONCEPTS</div>
+  <h2 class="section-title">Same Navigator playbook.<br/>New cultural codes.</h2>
+
+  <div class="hw-intro">
+    The recently launched WHOOP 5.0 Navigator band proved the strategy: <strong>one band, one cultural code, applied to an audience that hasn't been served yet.</strong> Navigator is for outdoor culture. These three concepts apply the same product photography language, same Fast Link slider system, same construction approach — to gaming, streaming, and retro computing culture.
+  </div>
+
+  <div class="hw-grid">
+    <div class="hw-card s1">
+      <div class="hw-image"><img src="assets/band_ghost.jpg" alt="Ghost Protocol band — black with red stitching, tactical aesthetic"/></div>
+      <div class="hw-content">
+        <div class="tag">GHOST PROTOCOL</div>
+        <div class="nm">Ranked Grinder</div>
+        <div class="type">Black + electric red · for the competitive player</div>
+        <div class="desc">Tactical aesthetic with circuit-board geometric weave, ribbed silicone backing, and red contrast stitching. For the ranked grinder at 2 AM.</div>
+        <div class="specs">
+          <div>Woven nylon strap, deep matte black</div>
+          <div>Subtle chrome geometric pattern</div>
+          <div>Ribbed silicone interior</div>
+          <div>Electric red stitch line + status LED</div>
+          <div>Stainless steel sensor housing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hw-card s2">
+      <div class="hw-image"><img src="assets/band_overclock.jpg" alt="Overclock band — purple to magenta gradient with hexagonal silicone backing"/></div>
+      <div class="hw-content">
+        <div class="tag">OVERCLOCK</div>
+        <div class="nm">Content Creator</div>
+        <div class="type">Purple-magenta gradient · for the streamer</div>
+        <div class="desc">Refined gradient inspired by stream alert lighting and OBS overlays — for the creator who takes their content seriously without the gaming-RGB explosion.</div>
+        <div class="specs">
+          <div>Woven nylon with magenta-purple gradient</div>
+          <div>Hexagonal honeycomb silicone backing</div>
+          <div>Subtle holographic shimmer in weave</div>
+          <div>Magenta stitch line + status LED</div>
+          <div>Stainless steel sensor housing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hw-card s3">
+      <div class="hw-image"><img src="assets/band_lanparty.jpg" alt="LANparty band — forest green with amber CRT scanline stripes"/></div>
+      <div class="hw-content">
+        <div class="tag">LANPARTY</div>
+        <div class="nm">Gaming Culture Historian</div>
+        <div class="type">CRT green + amber phosphor · for the broader audience</div>
+        <div class="desc">Retro computing aesthetic with CRT scanline-inspired amber stripes on deep forest green. For the gamer who knows the history of the medium.</div>
+        <div class="specs">
+          <div>Vintage CRT-monitor green nylon</div>
+          <div>Amber-yellow horizontal scanline weave</div>
+          <div>Diamond-pattern silicone backing</div>
+          <div>Amber stitch line + status LED</div>
+          <div>Stainless steel sensor housing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIFESTYLE ROW — context shots paired with the three bands above -->
+  <div class="lifestyle-row">
+    <div class="lifestyle-eyebrow">
+      <span>05.B — IN CONTEXT · LIFESTYLE PAIRINGS</span>
+      <span class="scroll-hint">↔ SWIPE</span>
+    </div>
+    <div class="lifestyle-grid">
+      <div class="lifestyle-card">
+        <img src="assets/lifestyle_1.jpg" alt="Ghost Protocol band on the wrist of a competitive gamer at a triple-monitor setup, late night ranked session"/>
+        <div class="label">
+          <span class="tag">GHOST PROTOCOL</span>
+          <span class="ctx">2 AM · ranked queue</span>
+        </div>
+      </div>
+      <div class="lifestyle-card">
+        <img src="assets/lifestyle_2.jpg" alt="Overclock band on the wrist of a streamer adjusting a microphone arm in front of an RGB-lit content creation setup"/>
+        <div class="label">
+          <span class="tag">OVERCLOCK</span>
+          <span class="ctx">going live · stream desk</span>
+        </div>
+      </div>
+      <div class="lifestyle-card">
+        <img src="assets/lifestyle_3.jpg" alt="LANparty band on the wrist of a person resting their hand on a vintage CRT arcade cabinet showing a HIGH SCORE screen"/>
+        <div class="label">
+          <span class="tag">LANPARTY</span>
+          <span class="ctx">arcade · cultural memory</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-note">
+    NOTE ON HARDWARE: These are concept renders, not engineering specs. The proposal is software-first — the collab straps are a parallel marketing/distribution play that uses WHOOP's existing hardware platform. They follow the same product strategy as Navigator (one cultural code per band) and require no new hardware development.
+  </div>
+</section>
+
+<!-- 06 — ORIGINAL SKETCHES -->
+<section id="sketches">
+  <div class="eyebrow">06 — THE ORIGINAL HAND-DRAWN PITCH</div>
+  <h2 class="section-title">Built by hand. <em>Six pages.</em> One month of work.</h2>
+
+  <div class="sketches-intro">
+    Before any digital rendering, before any AI assistance, this entire pitch existed as <strong>six pages of hand-drawn notebook sketches</strong>. The data, the charts, the strap concepts, the dashboard mockups — all drawn with markers and pens at a desk over the past month. Scroll through the original artifact below.
+  </div>
+
+  <div class="sketches-controls">
+    <div class="meta">6 PAGES · ORIGINAL HAND-DRAWN PITCH · APRIL 2026</div>
+    <a href="assets/original_sketches.pdf" download class="mvp-link">↓ DOWNLOAD ORIGINAL PDF</a>
+  </div>
+
+  <div class="sketches-viewer">
+    <div class="sketch-page"><img src="assets/sketches/page-1.jpg" alt="Page 1 — WHOOP Today, Saudi Bridge, Esports Revenue"/></div>
+    <div class="sketch-page"><img src="assets/sketches/page-2.jpg" alt="Page 2 — Creator Economy, Health Crisis, Screen Time, Mental Health"/></div>
+    <div class="sketch-page"><img src="assets/sketches/page-3.jpg" alt="Page 3 — Esports Physical Health Data, Twitch Demographics"/></div>
+    <div class="sketch-page"><img src="assets/sketches/page-4.jpg" alt="Page 4 — Health Arc, 2030 Projections, The Reframe"/></div>
+    <div class="sketch-page"><img src="assets/sketches/page-5.jpg" alt="Page 5 — Hardware collab strap concepts"/></div>
+    <div class="sketch-page"><img src="assets/sketches/page-6.jpg" alt="Page 6 — Software dashboard mockups"/></div>
+  </div>
+</section>
+
+<!-- BOTTOM LINE -->
+<section style="border-top:1px solid var(--border)">
+  <div class="bottom-line">
+    <p>The gaming and streaming generation is the first to grow up entirely online.</p>
+    <p>They are also the first to develop occupational health conditions as teenagers.</p>
+    <p>RSI at 17. Burnout at 23. Chronic back pain before they graduate.</p>
+    <p>No wearable company has spoken to them. No health infrastructure was built for them.</p>
+    <p><em>WHOOP can build the first wearable platform designed around who they actually are.</em></p>
+    <div class="signoff">Drawn by Abdullah Fakhri · Bio sci + Esports player &amp; coach</div>
+  </div>
+</section>
+
+<!-- 07 — ABOUT -->
+<div class="about" id="about">
+  <div class="about-inner">
+    <div class="eyebrow">07 — THE AUTHOR</div>
+    <h3>Why I built this — and why I'm the right person to walk you through it.</h3>
+
+    <p>I'm a <strong>first-generation Arab American</strong> with a biological sciences degree and a background as a competitive Call of Duty player and coach. I've spent the last decade inside the community this pitch is about — as a player, a teammate, a coach watching teenage talent burn out, and a biohacker trying to keep my own performance from collapsing under the volume of competitive play.</p>
+
+    <p>As my ranking, placements, and earnings climbed, my physical and mental health declined. More hours in the chair. Less sleep. Higher stress. Better at the game. Worse at everything else. I assumed it was just me — until I started looking at the data.</p>
+
+    <p>Every major health database now confirms the same pattern: CDC's NHIS-Teen survey, the NBER mental health analyses, the BMC Sports Science esports cohort studies, the Lancet Commission's 2025 adolescent health report. The crisis is documented, peer-reviewed, and growing. <strong>The infrastructure to address it has not been built.</strong></p>
+
+    <p>I built this pitch because someone had to build it, and because Will Ahmed's recent tweet about esports adoption confirms that the audience is already coming to WHOOP organically. They just don't have a product designed for who they are. <strong>I think WHOOP is the only company positioned to build it — and I think I'm the right person to have helped map it.</strong></p>
+
+    <div class="credentials">
+      <div class="cred">
+        <div class="lbl">Education</div>
+        <div class="val">Biological Sciences (Hon.) · Pre-dental track</div>
+      </div>
+      <div class="cred">
+        <div class="lbl">Esports background</div>
+        <div class="val">Collegiate Call of Duty player &amp; coach · 8+ years competitive</div>
+      </div>
+      <div class="cred">
+        <div class="lbl">Cultural fit</div>
+        <div class="val">First-generation Arab American · Miami-based · GCC capital narrative-aligned</div>
+      </div>
+    </div>
+
+    <div class="auth-note" style="margin-top:48px">
+      A NOTE ON THIS PITCH: The original pitch was hand-drawn across six pages of notebook sketches over the past month — viewable in section 06 above. The digital version you are reading is a refined reproduction of those sketches; the ideas, data, illustrations, and product strategy are mine, with AI assistance on web rendering. All statistics are sourced from peer-reviewed publications and primary sources, citations available throughout.
+    </div>
+  </div>
+</div>
+
+<!-- DATA TABLE -->
+<section>
+  <div class="eyebrow">DATA · ALL FIGURES SOURCED</div>
+  <h2 class="section-title" style="font-size:clamp(32px,5vw,52px)">Every statistic used in this pitch, with primary citations.</h2>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Statistic</th><th>Value</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>WHOOP valuation (Series G)</td><td class="val">$10.1B</td><td class="src">Yahoo Finance · March 2026</td></tr>
+        <tr><td>WHOOP members globally</td><td class="val">2.5M</td><td class="src">WHOOP press release 2026</td></tr>
+        <tr><td>US teens with 4h+ daily screen time</td><td class="val">50.4%</td><td class="src">CDC NHIS-Teen 2024</td></tr>
+        <tr><td>Teens (4h+ screens) with anxiety symptoms</td><td class="val">27.1%</td><td class="src">CDC NHIS-Teen 2024</td></tr>
+        <tr><td>Teens (4h+ screens) with depression symptoms</td><td class="val">25.9%</td><td class="src">CDC NHIS-Teen 2024</td></tr>
+        <tr><td>Female HS students "sad/hopeless" daily — 1999</td><td class="val">36%</td><td class="src">YRBSS CDC / NBER 2025</td></tr>
+        <tr><td>Female HS students "sad/hopeless" daily — 2023</td><td class="val">53%</td><td class="src">YRBSS CDC / NBER 2025</td></tr>
+        <tr><td>Global adolescents at risk by 2030</td><td class="val">&gt;1 billion</td><td class="src">Lancet Commission Aug 2025</td></tr>
+        <tr><td>Esports players reporting eye fatigue</td><td class="val">56%</td><td class="src">BMC Sports Science 2024</td></tr>
+        <tr><td>Esports players reporting neck/back pain</td><td class="val">42%</td><td class="src">Difrancisco-Donoghue 2019 · n=65</td></tr>
+        <tr><td>Esports players reporting wrist pain</td><td class="val">36%</td><td class="src">BMC Sports Science 2024</td></tr>
+        <tr><td>Competitive gamers in High Burnout Risk</td><td class="val">38.2%</td><td class="src">J Sports Sciences 2024 · n=453</td></tr>
+        <tr><td>Esports players doing NO physical exercise</td><td class="val">40%</td><td class="src">BMC Sports Science 2024</td></tr>
+        <tr><td>Esports players who sought medical help</td><td class="val">2%</td><td class="src">BMC Sports Science 2024</td></tr>
+        <tr><td>Twitch users under age 34</td><td class="val">72%</td><td class="src">Twitch / Nielsen 2024</td></tr>
+        <tr><td>Gaming Disorder classified by WHO</td><td class="val">ICD-11 · 2018</td><td class="src">World Health Organization</td></tr>
+        <tr><td>KSA esports GDP target by 2030</td><td class="val">$13.3B</td><td class="src">PwC / Saudi Esports Federation 2024</td></tr>
+        <tr><td>EWC Riyadh 2025 online viewers</td><td class="val">750M</td><td class="src">TalkEsport / Esports Charts 2025</td></tr>
+        <tr><td>Global esports revenue 2024</td><td class="val">$1.81B</td><td class="src">MarkNtel Advisors</td></tr>
+        <tr><td>Global esports revenue 2030 projected</td><td class="val">$5.9B</td><td class="src">MarkNtel Advisors / Statista</td></tr>
+        <tr><td>NFL revenue per viewer</td><td class="val">$51</td><td class="src">PwC Strategy&amp; Passion Into Profit</td></tr>
+        <tr><td>Esports revenue per viewer</td><td class="val">$2</td><td class="src">PwC Strategy&amp; 2024</td></tr>
+        <tr><td>Twitch revenue 2024</td><td class="val">$1.8B</td><td class="src">Business of Apps 2025</td></tr>
+        <tr><td>IRL streaming watch-time growth</td><td class="val">+186%</td><td class="src">Streams Charts 2025</td></tr>
+        <tr><td>Creator economy global market 2024</td><td class="val">$205B</td><td class="src">Grand View Research 2024</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta" id="contact">
+  <h2>The ask is <em>20 minutes.</em></h2>
+  <p>Whether WHOOP is already exploring this space or not, I'd love to walk the right person through what I built. The easiest ways to reach me:</p>
+
+  <div class="contact-grid">
+    <a href="mailto:abdullahnihad7@gmail.com" class="contact-card">
+      <div class="lbl">Email</div>
+      <div class="val">abdullahnihad7@gmail.com</div>
+    </a>
+    <a href="https://www.linkedin.com/in/abdullah-fakhri-33b613231/" target="_blank" rel="noopener" class="contact-card">
+      <div class="lbl">LinkedIn</div>
+      <div class="val">linkedin.com/in/abdullah-fakhri</div>
+    </a>
+    <a href="https://x.com/Abdufuse" target="_blank" rel="noopener" class="contact-card">
+      <div class="lbl">X / Twitter</div>
+      <div class="val">@Abdufuse</div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <div class="meta">
+      <strong>WHOOP × The Attention Economy Pivot</strong><br/>
+      An unsolicited strategic pitch by Abdullah Fakhri · 2026<br/><br/>
+      First-generation Arab American · Biological sciences graduate · Competitive esports player &amp; coach · Biohacker. This pitch was not commissioned. It was built because someone had to build it.
+    </div>
+    <div class="copyright">
+      © 2026 ABDULLAH FAKHRI<br/>
+      ALL DATA SOURCED · ALL CITATIONS VERIFIED
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      menuToggle.textContent = mobileMenu.classList.contains('open') ? 'CLOSE' : 'MENU';
+    });
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.textContent = 'MENU';
+      });
+    });
+  }
+
+  // Active section highlighting in nav
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('nav .chapters a');
+  function setActiveNav() {
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
+      if (scrollPos >= top && scrollPos < bottom) {
+        const id = section.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+</script>
+
+</body>
+</html>
